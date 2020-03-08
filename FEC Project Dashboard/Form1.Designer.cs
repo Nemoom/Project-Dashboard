@@ -65,6 +65,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.txt_Team_ProjectNameDemo = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_AMI.SuspendLayout();
@@ -436,6 +437,7 @@
             this.btn_Import.TabIndex = 2;
             this.btn_Import.Text = "导 入";
             this.btn_Import.UseVisualStyleBackColor = true;
+            this.btn_Import.Click += new System.EventHandler(this.Btn_Import_Click);
             // 
             // btn_Delete
             // 
@@ -512,6 +514,10 @@
             this.txt_Team_ProjectNameDemo.Size = new System.Drawing.Size(142, 34);
             this.txt_Team_ProjectNameDemo.TabIndex = 3;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(22F, 40F);
@@ -587,6 +593,7 @@
         private System.Windows.Forms.ComboBox ComboBox_StatusDemo;
         private System.Windows.Forms.ComboBox ComboBox_TeamDemo;
         private System.Windows.Forms.TextBox txt_Team_ProjectNameDemo;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

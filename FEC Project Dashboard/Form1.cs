@@ -215,5 +215,33 @@ namespace FEC_Project_Dashboard
         {
             this.panel_Paint.Controls.Remove(List_Panels[SelectedPanelIndex]);
         }
+
+        private void Btn_Import_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamReader read = new StreamReader(openFileDialog1.FileName, true))
+                {
+                    string aLine;
+                    int Index_Line = 0;
+                    while ((aLine = read.ReadLine()) != null)
+                    {
+                        if (Index_Line!=0)
+                        {
+                            Btn_Add_Click(sender, e);
+                            panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[0].Text = aLine.Split(',')[1];
+                            panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[1].Text = aLine.Split(',')[2];
+                            panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[2].Text = aLine.Split(',')[3];
+                        }
+                        else
+                        {
+                            panel_Paint.Controls.Clear();
+                        }
+                        Index_Line++;
+                    }
+                }             
+            }
+            
+        }
     }
 }
