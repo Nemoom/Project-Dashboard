@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace FEC_Project_Dashboard
 {
@@ -25,6 +26,41 @@ namespace FEC_Project_Dashboard
         {
             InitializeComponent();
         }
+        
+        public void ExportToCSV()
+        {
+            string line = string.Empty;
+            const string LOG_DIR = "logs";
+            string csvFilePath = Path.Combine(LOG_DIR, DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
+            if (!Directory.Exists(LOG_DIR)) Directory.CreateDirectory(LOG_DIR);
+
+            if (File.Exists(csvFilePath))
+            {
+                File.Delete(csvFilePath);
+            }
+            //写入表头
+            using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
+            {
+                line = "No.,ProjectName,Team,Status";
+                csvFile.WriteLine(line);
+            }
+            int mNo = 1;          
+            using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
+            {
+                for (int i = 0; i < panel_Paint.Controls.Count; i++)
+                {
+                    if (panel_Paint.Controls[i].Visible)
+                    {
+                        line = mNo++.ToString() + "," + panel_Paint.Controls[i].Controls[0].Text
+                            + "," + panel_Paint.Controls[i].Controls[1].Text 
+                            + "," + panel_Paint.Controls[i].Controls[2].Text;
+                        csvFile.WriteLine(line);
+                    }
+                }
+                
+            }
+
+        }
 
         private void Btn_Sort_Click(object sender, EventArgs e)
         {
@@ -37,7 +73,7 @@ namespace FEC_Project_Dashboard
             {
                 ChangeLocationEnable = false;
                 //自动规整位置
-
+                ExportToCSV();
                 btn_Sort.Text = "排 序";
             }
         }
