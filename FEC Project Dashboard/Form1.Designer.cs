@@ -53,8 +53,8 @@
             this.panel_ManualSorting = new System.Windows.Forms.Panel();
             this.panel_Paint = new System.Windows.Forms.Panel();
             this.panel_ItemDemo = new System.Windows.Forms.Panel();
-            this.txt_Team_ProjectNameDemo = new System.Windows.Forms.TextBox();
             this.ComboBox_TeamDemo = new System.Windows.Forms.ComboBox();
+            this.ComboBox_StatusDemo = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_Sort = new System.Windows.Forms.Button();
             this.btn_Import = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@
             this.panel_Finished = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
+            this.txt_Team_ProjectNameDemo = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_AMI.SuspendLayout();
@@ -356,38 +357,43 @@
             // 
             this.panel_ItemDemo.Controls.Add(this.txt_Team_ProjectNameDemo);
             this.panel_ItemDemo.Controls.Add(this.ComboBox_TeamDemo);
+            this.panel_ItemDemo.Controls.Add(this.ComboBox_StatusDemo);
             this.panel_ItemDemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            this.panel_ItemDemo.Location = new System.Drawing.Point(10, 60);
+            this.panel_ItemDemo.Location = new System.Drawing.Point(9, 3);
             this.panel_ItemDemo.Name = "panel_ItemDemo";
             this.panel_ItemDemo.Size = new System.Drawing.Size(320, 36);
             this.panel_ItemDemo.TabIndex = 0;
-            this.panel_ItemDemo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_ItemDemo_MouseDown);
-            // 
-            // txt_Team_ProjectNameDemo
-            // 
-            this.txt_Team_ProjectNameDemo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Team_ProjectNameDemo.Location = new System.Drawing.Point(0, 0);
-            this.txt_Team_ProjectNameDemo.Name = "txt_Team_ProjectNameDemo";
-            this.txt_Team_ProjectNameDemo.Size = new System.Drawing.Size(230, 34);
-            this.txt_Team_ProjectNameDemo.TabIndex = 1;
-            this.txt_Team_ProjectNameDemo.Text = "AMI-轮胎传递环";
-            this.txt_Team_ProjectNameDemo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Txt_Team_ProjectNameDemo_MouseDown);
-            this.txt_Team_ProjectNameDemo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Txt_Team_ProjectNameDemo_MouseMove);
-            this.txt_Team_ProjectNameDemo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Txt_Team_ProjectNameDemo_MouseUp);
+            this.panel_ItemDemo.Visible = false;
             // 
             // ComboBox_TeamDemo
             // 
             this.ComboBox_TeamDemo.Dock = System.Windows.Forms.DockStyle.Right;
             this.ComboBox_TeamDemo.FormattingEnabled = true;
             this.ComboBox_TeamDemo.Items.AddRange(new object[] {
+            "AMI",
+            "ELA",
+            "GI",
+            "FP",
+            "PI and LT",
+            "Others"});
+            this.ComboBox_TeamDemo.Location = new System.Drawing.Point(142, 0);
+            this.ComboBox_TeamDemo.Name = "ComboBox_TeamDemo";
+            this.ComboBox_TeamDemo.Size = new System.Drawing.Size(88, 37);
+            this.ComboBox_TeamDemo.TabIndex = 2;
+            // 
+            // ComboBox_StatusDemo
+            // 
+            this.ComboBox_StatusDemo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ComboBox_StatusDemo.FormattingEnabled = true;
+            this.ComboBox_StatusDemo.Items.AddRange(new object[] {
             "进行中",
             "未启动",
             "已完成"});
-            this.ComboBox_TeamDemo.Location = new System.Drawing.Point(230, 0);
-            this.ComboBox_TeamDemo.Name = "ComboBox_TeamDemo";
-            this.ComboBox_TeamDemo.Size = new System.Drawing.Size(90, 37);
-            this.ComboBox_TeamDemo.Sorted = true;
-            this.ComboBox_TeamDemo.TabIndex = 1;
+            this.ComboBox_StatusDemo.Location = new System.Drawing.Point(230, 0);
+            this.ComboBox_StatusDemo.Name = "ComboBox_StatusDemo";
+            this.ComboBox_StatusDemo.Size = new System.Drawing.Size(90, 37);
+            this.ComboBox_StatusDemo.Sorted = true;
+            this.ComboBox_StatusDemo.TabIndex = 1;
             // 
             // tableLayoutPanel3
             // 
@@ -441,6 +447,7 @@
             this.btn_Delete.TabIndex = 1;
             this.btn_Delete.Text = "删 除";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.Btn_Delete_Click);
             // 
             // btn_Add
             // 
@@ -496,6 +503,14 @@
             this.label9.Size = new System.Drawing.Size(138, 29);
             this.label9.TabIndex = 1;
             this.label9.Text = "已完成项目";
+            // 
+            // txt_Team_ProjectNameDemo
+            // 
+            this.txt_Team_ProjectNameDemo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Team_ProjectNameDemo.Location = new System.Drawing.Point(0, 0);
+            this.txt_Team_ProjectNameDemo.Name = "txt_Team_ProjectNameDemo";
+            this.txt_Team_ProjectNameDemo.Size = new System.Drawing.Size(142, 34);
+            this.txt_Team_ProjectNameDemo.TabIndex = 3;
             // 
             // Form1
             // 
@@ -569,8 +584,9 @@
         private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel_ItemDemo;
-        private System.Windows.Forms.TextBox txt_Team_ProjectNameDemo;
+        private System.Windows.Forms.ComboBox ComboBox_StatusDemo;
         private System.Windows.Forms.ComboBox ComboBox_TeamDemo;
+        private System.Windows.Forms.TextBox txt_Team_ProjectNameDemo;
     }
 }
 
