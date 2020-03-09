@@ -76,10 +76,10 @@
             this.panel_PILT.SuspendLayout();
             this.panel_Others.SuspendLayout();
             this.panel_ManualSorting.SuspendLayout();
-            this.panel_Paint.SuspendLayout();
             this.panel_ItemDemo.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel_Finished.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -349,7 +349,6 @@
             // 
             this.panel_Paint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_Paint.BackgroundImage")));
             this.panel_Paint.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel_Paint.Controls.Add(this.panel_ItemDemo);
             this.panel_Paint.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Paint.Location = new System.Drawing.Point(0, 0);
             this.panel_Paint.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -363,7 +362,7 @@
             this.panel_ItemDemo.Controls.Add(this.ComboBox_TeamDemo);
             this.panel_ItemDemo.Controls.Add(this.ComboBox_StatusDemo);
             this.panel_ItemDemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            this.panel_ItemDemo.Location = new System.Drawing.Point(28, 3);
+            this.panel_ItemDemo.Location = new System.Drawing.Point(17, 14);
             this.panel_ItemDemo.Name = "panel_ItemDemo";
             this.panel_ItemDemo.Size = new System.Drawing.Size(350, 36);
             this.panel_ItemDemo.TabIndex = 0;
@@ -499,6 +498,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.panel_ItemDemo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 29);
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -559,12 +559,12 @@
             this.panel_Others.PerformLayout();
             this.panel_ManualSorting.ResumeLayout(false);
             this.panel_ManualSorting.PerformLayout();
-            this.panel_Paint.ResumeLayout(false);
             this.panel_ItemDemo.ResumeLayout(false);
             this.panel_ItemDemo.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel_Finished.ResumeLayout(false);
             this.panel_Finished.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -15,6 +15,7 @@ namespace FEC_Project_Dashboard
         bool ChangeLocationEnable = false;
         int xPos;//记录x坐标: 
         int yPos;//记录y坐标: 
+        int startY;
         bool MoveFlag;//记录是否按下鼠标:
         private int SelectedPanelIndex = 0;
         //FrameControl fc;//边框控件
@@ -62,6 +63,32 @@ namespace FEC_Project_Dashboard
 
         }
 
+        private void MoveUp(Panel m_Panel, int destinationY)
+        {
+            foreach (Panel item in panel_Paint.Controls)
+            {                
+                if (item.Top == destinationY)
+                {
+                    MoveUp(item, destinationY + 34);
+                }
+            }
+            m_Panel.Left = 28;
+            m_Panel.Top = destinationY;
+        }
+
+        private void MoveDown(Panel m_Panel, int destinationY)
+        {
+            foreach (Panel item in panel_Paint.Controls)
+            {
+                if (item.Top == destinationY)
+                {
+                    MoveDown(item, destinationY - 34);
+                }
+            }
+            m_Panel.Left = 28;
+            m_Panel.Top = destinationY;
+        }
+
         private void Btn_Sort_Click(object sender, EventArgs e)
         {
             if (btn_Sort.Text == "排 序")
@@ -83,10 +110,10 @@ namespace FEC_Project_Dashboard
             System.Windows.Forms.Panel panel_Item = new Panel();
             List_Panels.Add(panel_Item);
             panel_Item.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            panel_Item.Location = new System.Drawing.Point(28, 34 * (List_Panels.Count - 1)+2);
+            panel_Item.Location = new System.Drawing.Point(28, 34 * (panel_Paint.Controls.Count) + 2);
             panel_Item.Name = "panel_ItemDemo";
             panel_Item.Size = new System.Drawing.Size(350, 36);
-
+            
             System.Windows.Forms.ComboBox comboBox_Team = new ComboBox();
             comboBox_Team.Dock = System.Windows.Forms.DockStyle.Right;
             comboBox_Team.FormattingEnabled = true;
@@ -148,6 +175,7 @@ namespace FEC_Project_Dashboard
                         if (sender.Equals(List_txt_ProjectNames[i]))
                         {
                             SelectedPanelIndex = i;
+                            startY = List_Panels[i].Top;
                             List_Panels[i].Parent.Refresh();
                             List_Panels[i].BringToFront();
                             //fc = new FrameControl(panelCamArray[i]);
@@ -174,20 +202,20 @@ namespace FEC_Project_Dashboard
                             {
                                 int destination_X = List_Panels[i].Left + Convert.ToInt16(e.X - xPos);//设置x坐标.
                                 int destination_Y = List_Panels[i].Top + Convert.ToInt16(e.Y - yPos);//设置y坐标.
-                                for (int j = 0; j < List_Panels.Count; j++)
-                                {
-                                    if (List_Panels[j].Top < List_Panels[i].Top && List_Panels[j].Top > destination_Y)
-                                    {
-                                        List_Panels[j].Top += List_Panels[j].Height;
-                                    }
-                                }
+                                //for (int j = 0; j < List_Panels.Count; j++)
+                                //{
+                                //    if (List_Panels[j].Top < List_Panels[i].Top && List_Panels[j].Top > destination_Y)
+                                //    {
+                                //        List_Panels[j].Top += List_Panels[j].Height;
+                                //    }
+                                //}
                                 List_Panels[i].Left = destination_X;
                                 List_Panels[i].Top = destination_Y;
-                                //if (fc != null)
-                                //{
-                                //    fc.Visible = false;
+                                ////if (fc != null)
+                                ////{
+                                ////    fc.Visible = false;
 
-                                //}
+                                ////}
                             }
                         }
                     }
@@ -202,6 +230,66 @@ namespace FEC_Project_Dashboard
                 if (e.Button == MouseButtons.Left)
                 {
                     MoveFlag = false;
+                    for (int i = 0; i < List_txt_ProjectNames.Count; i++)
+                    {
+                        if (sender.Equals(List_txt_ProjectNames[i]))
+                        {
+                            if (List_Panels[i].Top > startY)
+                            {
+                                //move down
+                                if (List_Panels[i].Top < 36)
+                                {
+                                    List_Panels[i].Left = 28;
+                                    List_Panels[i].Top = 2;
+                                }
+                                else
+                                {
+                                    if (List_Panels[i].Top >= 34 * (panel_Paint.Controls.Count - 1) + 2)
+                                    {
+                                        MoveDown(List_Panels[i], 34 * (panel_Paint.Controls.Count - 1) + 2);
+                                    }
+                                    else
+                                    {
+                                        for (int j = 1; j < panel_Paint.Controls.Count - 1; j++)
+                                        {
+                                            if (List_Panels[i].Top >= 36 + (j - 1) * 34 && List_Panels[i].Top < 36 + j * 34)
+                                            {
+                                                MoveDown(List_Panels[i], 36 + (j - 1) * 34);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else if (List_Panels[i].Top < startY)
+                            {
+                                //move up
+                                if (List_Panels[i].Top >= 34 * (panel_Paint.Controls.Count - 1) + 2)
+                                {
+                                    List_Panels[i].Left = 28;
+                                    List_Panels[i].Top = 34 * (panel_Paint.Controls.Count - 1) + 2;
+                                }
+                                else
+                                {
+                                    if (List_Panels[i].Top < 36)
+                                    {
+                                        MoveUp(List_Panels[i], 2);
+                                    }
+                                    else
+                                    {
+                                        for (int j = 1; j < panel_Paint.Controls.Count - 1; j++)
+                                        {
+                                            if (List_Panels[i].Top >= 36 + (j - 1) * 34 && List_Panels[i].Top < 36 + j * 34)
+                                            {
+                                                MoveUp(List_Panels[i], 36 + (j - 1) * 34);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                    
                     //for (int i = 0; i < List_txt_Team_ProjectNames.Count; i++)
                     //{
                     //    if (sender.Equals(List_txt_Team_ProjectNames[i]))
