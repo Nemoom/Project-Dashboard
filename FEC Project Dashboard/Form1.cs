@@ -19,6 +19,9 @@ namespace FEC_Project_Dashboard
         bool MoveFlag;//记录是否按下鼠标:
         private int SelectedPanelIndex = 0;
         //FrameControl fc;//边框控件
+        List<int> Ys = new List<int>();
+        List<int> Ys_Sort;
+        List<int> idx;
         List<System.Windows.Forms.Panel> List_Panels = new List<System.Windows.Forms.Panel>();
         List<System.Windows.Forms.ComboBox> List_ComboBox_Teams = new List<System.Windows.Forms.ComboBox>();
         List<System.Windows.Forms.ComboBox> List_ComboBox_Status = new List<System.Windows.Forms.ComboBox>();
@@ -52,9 +55,9 @@ namespace FEC_Project_Dashboard
                 {
                     if (panel_Paint.Controls[i].Visible)
                     {
-                        line = mNo++.ToString() + "," + panel_Paint.Controls[i].Controls[0].Text
-                            + "," + panel_Paint.Controls[i].Controls[1].Text 
-                            + "," + panel_Paint.Controls[i].Controls[2].Text;
+                        line = mNo++.ToString() + "," + panel_Paint.Controls[idx[i]].Controls[0].Text
+                            + "," + panel_Paint.Controls[idx[i]].Controls[1].Text
+                            + "," + panel_Paint.Controls[idx[i]].Controls[2].Text;
                         csvFile.WriteLine(line);
                     }
                 }
@@ -98,8 +101,58 @@ namespace FEC_Project_Dashboard
             }
             else
             {
-                ChangeLocationEnable = false;
-                //自动规整位置
+                ChangeLocationEnable = false; 
+                //排序后输出
+                Ys = new List<int>();                
+                for (int i = 0; i < panel_Paint.Controls.Count; i++)
+                {
+                    Ys.Add(panel_Paint.Controls[i].Top);
+                }
+                var sorted = Ys
+                    .Select((x, i) => new KeyValuePair<int, int>(x, i))
+                    .OrderBy(x => x.Key)
+                    .ToList();
+                Ys_Sort = sorted.Select(x => x.Key).ToList();
+                idx = sorted.Select(x => x.Value).ToList();
+                //筛选已完成&分行业
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox3.Items.Clear();
+                listBox4.Items.Clear();
+                listBox5.Items.Clear();
+                listBox6.Items.Clear();
+                listBox7.Items.Clear();
+                for (int i = 0; i < idx.Count; i++)
+                {
+                    if (panel_Paint.Controls[idx[i]].Controls[2].Text=="已完成")
+                    {
+                        listBox7.Items.Add(panel_Paint.Controls[idx[i]].Controls[1].Text + "-" + panel_Paint.Controls[idx[i]].Controls[0].Text);
+                    }
+                    switch (panel_Paint.Controls[idx[i]].Controls[1].Text)
+                    {
+                        case "AMI":
+                            listBox1.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                            break;
+                        case "ELA":
+                            listBox2.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                            break;
+                        case "GI":
+                            listBox3.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                            break;
+                        case "FP":
+                            listBox4.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                            break;
+                        case "PI and LT":
+                            listBox5.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                            break;
+                        case "Others":
+                            listBox6.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                            break;
+                        default:
+                            break;
+                    }
+                }                
+
                 ExportToCSV();
                 btn_Sort.Text = "排 序";
             }

@@ -67,6 +67,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listBox7 = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_AMI.SuspendLayout();
@@ -498,6 +499,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.listBox7);
             this.panel1.Controls.Add(this.panel_ItemDemo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 29);
@@ -530,6 +532,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(406, 452);
             this.panel2.TabIndex = 4;
+            // 
+            // listBox7
+            // 
+            this.listBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            this.listBox7.FormattingEnabled = true;
+            this.listBox7.ItemHeight = 29;
+            this.listBox7.Location = new System.Drawing.Point(0, 0);
+            this.listBox7.Name = "listBox7";
+            this.listBox7.Size = new System.Drawing.Size(264, 573);
+            this.listBox7.TabIndex = 1;
             // 
             // Form1
             // 
@@ -610,6 +623,7 @@
         private System.Windows.Forms.TextBox txt_Team_ProjectNameDemo;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ListBox listBox7;
     }
 }
 
