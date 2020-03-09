@@ -53,6 +53,7 @@
             this.panel_ManualSorting = new System.Windows.Forms.Panel();
             this.panel_Paint = new System.Windows.Forms.Panel();
             this.panel_ItemDemo = new System.Windows.Forms.Panel();
+            this.txt_Team_ProjectNameDemo = new System.Windows.Forms.TextBox();
             this.ComboBox_TeamDemo = new System.Windows.Forms.ComboBox();
             this.ComboBox_StatusDemo = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -64,8 +65,8 @@
             this.panel_Finished = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.txt_Team_ProjectNameDemo = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_AMI.SuspendLayout();
@@ -79,15 +80,16 @@
             this.panel_ItemDemo.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel_Finished.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 2);
@@ -131,7 +133,7 @@
             this.tableLayoutPanel2.Controls.Add(this.panel_PILT, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel_Others, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(368, 131);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(437, 131);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -334,24 +336,25 @@
             // panel_ManualSorting
             // 
             this.panel_ManualSorting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_ManualSorting.Controls.Add(this.panel_Paint);
+            this.panel_ManualSorting.Controls.Add(this.panel2);
             this.panel_ManualSorting.Controls.Add(this.tableLayoutPanel3);
             this.panel_ManualSorting.Controls.Add(this.label8);
             this.panel_ManualSorting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_ManualSorting.Location = new System.Drawing.Point(23, 131);
             this.panel_ManualSorting.Name = "panel_ManualSorting";
-            this.panel_ManualSorting.Size = new System.Drawing.Size(339, 608);
+            this.panel_ManualSorting.Size = new System.Drawing.Size(408, 608);
             this.panel_ManualSorting.TabIndex = 2;
             // 
             // panel_Paint
             // 
+            this.panel_Paint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_Paint.BackgroundImage")));
             this.panel_Paint.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel_Paint.Controls.Add(this.panel_ItemDemo);
-            this.panel_Paint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Paint.Location = new System.Drawing.Point(0, 29);
+            this.panel_Paint.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_Paint.Location = new System.Drawing.Point(0, 0);
             this.panel_Paint.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel_Paint.Name = "panel_Paint";
-            this.panel_Paint.Size = new System.Drawing.Size(337, 477);
+            this.panel_Paint.Size = new System.Drawing.Size(385, 816);
             this.panel_Paint.TabIndex = 3;
             // 
             // panel_ItemDemo
@@ -360,11 +363,19 @@
             this.panel_ItemDemo.Controls.Add(this.ComboBox_TeamDemo);
             this.panel_ItemDemo.Controls.Add(this.ComboBox_StatusDemo);
             this.panel_ItemDemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            this.panel_ItemDemo.Location = new System.Drawing.Point(9, 3);
+            this.panel_ItemDemo.Location = new System.Drawing.Point(28, 3);
             this.panel_ItemDemo.Name = "panel_ItemDemo";
-            this.panel_ItemDemo.Size = new System.Drawing.Size(320, 36);
+            this.panel_ItemDemo.Size = new System.Drawing.Size(350, 36);
             this.panel_ItemDemo.TabIndex = 0;
             this.panel_ItemDemo.Visible = false;
+            // 
+            // txt_Team_ProjectNameDemo
+            // 
+            this.txt_Team_ProjectNameDemo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Team_ProjectNameDemo.Location = new System.Drawing.Point(0, 0);
+            this.txt_Team_ProjectNameDemo.Name = "txt_Team_ProjectNameDemo";
+            this.txt_Team_ProjectNameDemo.Size = new System.Drawing.Size(172, 34);
+            this.txt_Team_ProjectNameDemo.TabIndex = 3;
             // 
             // ComboBox_TeamDemo
             // 
@@ -377,7 +388,7 @@
             "FP",
             "PI and LT",
             "Others"});
-            this.ComboBox_TeamDemo.Location = new System.Drawing.Point(142, 0);
+            this.ComboBox_TeamDemo.Location = new System.Drawing.Point(172, 0);
             this.ComboBox_TeamDemo.Name = "ComboBox_TeamDemo";
             this.ComboBox_TeamDemo.Size = new System.Drawing.Size(88, 37);
             this.ComboBox_TeamDemo.TabIndex = 2;
@@ -390,7 +401,7 @@
             "进行中",
             "未启动",
             "已完成"});
-            this.ComboBox_StatusDemo.Location = new System.Drawing.Point(230, 0);
+            this.ComboBox_StatusDemo.Location = new System.Drawing.Point(260, 0);
             this.ComboBox_StatusDemo.Name = "ComboBox_StatusDemo";
             this.ComboBox_StatusDemo.Size = new System.Drawing.Size(90, 37);
             this.ComboBox_StatusDemo.Sorted = true;
@@ -406,22 +417,22 @@
             this.tableLayoutPanel3.Controls.Add(this.btn_Delete, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Add, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 506);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 481);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(337, 100);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(406, 125);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // btn_Sort
             // 
             this.btn_Sort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Sort.Location = new System.Drawing.Point(171, 53);
+            this.btn_Sort.Location = new System.Drawing.Point(206, 65);
             this.btn_Sort.Name = "btn_Sort";
-            this.btn_Sort.Size = new System.Drawing.Size(163, 44);
+            this.btn_Sort.Size = new System.Drawing.Size(197, 57);
             this.btn_Sort.TabIndex = 3;
             this.btn_Sort.Text = "排 序";
             this.btn_Sort.UseVisualStyleBackColor = true;
@@ -431,9 +442,9 @@
             // 
             this.btn_Import.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Import.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Import.Location = new System.Drawing.Point(3, 53);
+            this.btn_Import.Location = new System.Drawing.Point(3, 65);
             this.btn_Import.Name = "btn_Import";
-            this.btn_Import.Size = new System.Drawing.Size(162, 44);
+            this.btn_Import.Size = new System.Drawing.Size(197, 57);
             this.btn_Import.TabIndex = 2;
             this.btn_Import.Text = "导 入";
             this.btn_Import.UseVisualStyleBackColor = true;
@@ -443,9 +454,9 @@
             // 
             this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Delete.Location = new System.Drawing.Point(171, 3);
+            this.btn_Delete.Location = new System.Drawing.Point(206, 3);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(163, 44);
+            this.btn_Delete.Size = new System.Drawing.Size(197, 56);
             this.btn_Delete.TabIndex = 1;
             this.btn_Delete.Text = "删 除";
             this.btn_Delete.UseVisualStyleBackColor = true;
@@ -457,7 +468,7 @@
             this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Add.Location = new System.Drawing.Point(3, 3);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(162, 44);
+            this.btn_Add.Size = new System.Drawing.Size(197, 56);
             this.btn_Add.TabIndex = 0;
             this.btn_Add.Text = "新 增";
             this.btn_Add.UseVisualStyleBackColor = true;
@@ -480,9 +491,9 @@
             this.panel_Finished.Controls.Add(this.panel1);
             this.panel_Finished.Controls.Add(this.label9);
             this.panel_Finished.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Finished.Location = new System.Drawing.Point(1059, 131);
+            this.panel_Finished.Location = new System.Drawing.Point(1128, 131);
             this.panel_Finished.Name = "panel_Finished";
-            this.panel_Finished.Size = new System.Drawing.Size(339, 608);
+            this.panel_Finished.Size = new System.Drawing.Size(270, 608);
             this.panel_Finished.TabIndex = 3;
             // 
             // panel1
@@ -492,7 +503,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 29);
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(337, 577);
+            this.panel1.Size = new System.Drawing.Size(268, 577);
             this.panel1.TabIndex = 4;
             // 
             // label9
@@ -506,22 +517,25 @@
             this.label9.TabIndex = 1;
             this.label9.Text = "已完成项目";
             // 
-            // txt_Team_ProjectNameDemo
-            // 
-            this.txt_Team_ProjectNameDemo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Team_ProjectNameDemo.Location = new System.Drawing.Point(0, 0);
-            this.txt_Team_ProjectNameDemo.Name = "txt_Team_ProjectNameDemo";
-            this.txt_Team_ProjectNameDemo.Size = new System.Drawing.Size(142, 34);
-            this.txt_Team_ProjectNameDemo.TabIndex = 3;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.panel_Paint);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 29);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(406, 452);
+            this.panel2.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(22F, 40F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1422, 763);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -551,6 +565,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel_Finished.ResumeLayout(false);
             this.panel_Finished.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -594,6 +609,7 @@
         private System.Windows.Forms.ComboBox ComboBox_TeamDemo;
         private System.Windows.Forms.TextBox txt_Team_ProjectNameDemo;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

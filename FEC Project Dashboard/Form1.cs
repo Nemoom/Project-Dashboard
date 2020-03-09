@@ -83,9 +83,9 @@ namespace FEC_Project_Dashboard
             System.Windows.Forms.Panel panel_Item = new Panel();
             List_Panels.Add(panel_Item);
             panel_Item.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            panel_Item.Location = new System.Drawing.Point(0, 30 * (List_Panels.Count - 1));
+            panel_Item.Location = new System.Drawing.Point(28, 34 * (List_Panels.Count - 1)+2);
             panel_Item.Name = "panel_ItemDemo";
-            panel_Item.Size = new System.Drawing.Size(320, 36);
+            panel_Item.Size = new System.Drawing.Size(350, 36);
 
             System.Windows.Forms.ComboBox comboBox_Team = new ComboBox();
             comboBox_Team.Dock = System.Windows.Forms.DockStyle.Right;
@@ -172,8 +172,17 @@ namespace FEC_Project_Dashboard
                         {
                             if (MoveFlag)
                             {
-                                List_Panels[i].Left += Convert.ToInt16(e.X - xPos);//设置x坐标.
-                                List_Panels[i].Top += Convert.ToInt16(e.Y - yPos);//设置y坐标.
+                                int destination_X = List_Panels[i].Left + Convert.ToInt16(e.X - xPos);//设置x坐标.
+                                int destination_Y = List_Panels[i].Top + Convert.ToInt16(e.Y - yPos);//设置y坐标.
+                                for (int j = 0; j < List_Panels.Count; j++)
+                                {
+                                    if (List_Panels[j].Top < List_Panels[i].Top && List_Panels[j].Top > destination_Y)
+                                    {
+                                        List_Panels[j].Top += List_Panels[j].Height;
+                                    }
+                                }
+                                List_Panels[i].Left = destination_X;
+                                List_Panels[i].Top = destination_Y;
                                 //if (fc != null)
                                 //{
                                 //    fc.Visible = false;
