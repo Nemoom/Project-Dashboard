@@ -17,14 +17,14 @@ namespace FEC_Project_Dashboard
         int yPos;//记录y坐标: 
         int startY;
         bool MoveFlag;//记录是否按下鼠标:
-        private int SelectedPanelIndex = 0;
+        private int SelectedPanelIndex = -1;
         //FrameControl fc;//边框控件
         List<int> Ys = new List<int>();
         List<int> Ys_Sort;
         List<int> idx;
         List<System.Windows.Forms.Panel> List_Panels = new List<System.Windows.Forms.Panel>();
-        List<System.Windows.Forms.ComboBox> List_ComboBox_Teams = new List<System.Windows.Forms.ComboBox>();
-        List<System.Windows.Forms.ComboBox> List_ComboBox_Status = new List<System.Windows.Forms.ComboBox>();
+        //List<System.Windows.Forms.ComboBox> List_ComboBox_Teams = new List<System.Windows.Forms.ComboBox>();
+        //List<System.Windows.Forms.ComboBox> List_ComboBox_Status = new List<System.Windows.Forms.ComboBox>();
         List<System.Windows.Forms.TextBox> List_txt_ProjectNames = new List<System.Windows.Forms.TextBox>();
         public Form1()
         {
@@ -85,7 +85,7 @@ namespace FEC_Project_Dashboard
         //筛选已完成&分行业
         public void Filter() 
         {
-            SortByY();//排序后输出
+            //SortByY();//排序后输出
             listBox1.Items.Clear();
             listBox2.Items.Clear();
             listBox3.Items.Clear();
@@ -156,98 +156,184 @@ namespace FEC_Project_Dashboard
             if (btn_Sort.Text == "排 序")
             {
                 ChangeLocationEnable = true;
+                btn_Add.Enabled = false;
+                btn_Delete.Enabled = false;
                 btn_Sort.Text = "完 成";
             }
             else
             {
                 ChangeLocationEnable = false;
+                SortByY();
                 Filter();
+                List_Panels = new List<Panel>();
+                List_txt_ProjectNames = new List<TextBox>();
+                for (int i = 0; i < idx.Count; i++)
+                {
+                    List_Panels.Add((Panel)panel_Paint.Controls[idx[i]]);
+                    List_txt_ProjectNames.Add((TextBox)panel_Paint.Controls[idx[i]].Controls[0]);
+                }
                 ExportToCSV();
+                btn_Add.Enabled = true;
+                btn_Delete.Enabled = true;
                 btn_Sort.Text = "排 序";
             }
         }
 
         private void Btn_Add_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Panel panel_Item = new Panel();
-            List_Panels.Add(panel_Item);
-            panel_Item.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            panel_Item.Location = new System.Drawing.Point(28, 34 * (panel_Paint.Controls.Count) + 2);
-            panel_Item.Name = "panel_ItemDemo";
-            panel_Item.Size = new System.Drawing.Size(350, 36);
-            
-            System.Windows.Forms.ComboBox comboBox_Team = new ComboBox();
-            comboBox_Team.Dock = System.Windows.Forms.DockStyle.Right;
-            comboBox_Team.FormattingEnabled = true;
-            comboBox_Team.Items.AddRange(new object[] {
+            if (SelectedPanelIndex==-1)
+            {
+                System.Windows.Forms.Panel panel_Item = new Panel();
+                List_Panels.Add(panel_Item);
+                panel_Item.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+                panel_Item.Location = new System.Drawing.Point(28, 34 * (panel_Paint.Controls.Count) + 2);
+                panel_Item.Name = "panel_ItemDemo";
+                panel_Item.Size = new System.Drawing.Size(panel_Paint.Width - 30, 36);
+
+                System.Windows.Forms.ComboBox comboBox_Team = new ComboBox();
+                comboBox_Team.Dock = System.Windows.Forms.DockStyle.Right;
+                comboBox_Team.FormattingEnabled = true;
+                comboBox_Team.Items.AddRange(new object[] {
             "AMI",
             "ELA",
             "GI",
             "FP",
             "PI and LT",
             "Others"});
-            comboBox_Team.Location = new System.Drawing.Point(142, 0);
-            comboBox_Team.Name = "ComboBox_Team";
-            comboBox_Team.Size = new System.Drawing.Size(88, 37);
-            comboBox_Team.TabIndex = 2;
-            
-            System.Windows.Forms.ComboBox comboBox_Status = new ComboBox();
-            comboBox_Status.Dock = System.Windows.Forms.DockStyle.Right;
-            comboBox_Status.FormattingEnabled = true;
-            comboBox_Status.Items.AddRange(new object[] {
+                comboBox_Team.Location = new System.Drawing.Point(142, 0);
+                comboBox_Team.Name = "ComboBox_Team";
+                comboBox_Team.Size = new System.Drawing.Size(88, 37);
+                comboBox_Team.TabIndex = 2;
+
+                System.Windows.Forms.ComboBox comboBox_Status = new ComboBox();
+                comboBox_Status.Dock = System.Windows.Forms.DockStyle.Right;
+                comboBox_Status.FormattingEnabled = true;
+                comboBox_Status.Items.AddRange(new object[] {
             "进行中",
             "未启动",
             "已完成"});
-            comboBox_Status.Location = new System.Drawing.Point(230, 0);
-            comboBox_Status.Name = "ComboBox_Status";
-            comboBox_Status.Size = new System.Drawing.Size(90, 37);
-            comboBox_Status.Sorted = true;
-            comboBox_Status.TabIndex = 1;
+                comboBox_Status.Location = new System.Drawing.Point(230, 0);
+                comboBox_Status.Name = "ComboBox_Status";
+                comboBox_Status.Size = new System.Drawing.Size(90, 37);
+                comboBox_Status.Sorted = true;
+                comboBox_Status.TabIndex = 1;
 
-            System.Windows.Forms.TextBox txt_Team_ProjectName = new TextBox();
-            txt_Team_ProjectName.Dock = System.Windows.Forms.DockStyle.Fill;
-            txt_Team_ProjectName.Location = new System.Drawing.Point(0, 0);
-            txt_Team_ProjectName.Name = "txt_Team_ProjectName";
-            txt_Team_ProjectName.Size = new System.Drawing.Size(142, 34);
-            txt_Team_ProjectName.TabIndex = 3;
-            txt_Team_ProjectName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Txt_ProjectName_MouseDown);
-            txt_Team_ProjectName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Txt_ProjectName_MouseMove);
-            txt_Team_ProjectName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Txt_ProjectName_MouseUp);
-            List_txt_ProjectNames.Add(txt_Team_ProjectName);
+                System.Windows.Forms.TextBox txt_Team_ProjectName = new TextBox();
+                txt_Team_ProjectName.Dock = System.Windows.Forms.DockStyle.Fill;
+                txt_Team_ProjectName.Location = new System.Drawing.Point(0, 0);
+                txt_Team_ProjectName.Name = "txt_Team_ProjectName";
+                txt_Team_ProjectName.Size = new System.Drawing.Size(142, 34);
+                txt_Team_ProjectName.TabIndex = 3;
+                txt_Team_ProjectName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Txt_ProjectName_MouseDown);
+                txt_Team_ProjectName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Txt_ProjectName_MouseMove);
+                txt_Team_ProjectName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Txt_ProjectName_MouseUp);
+                List_txt_ProjectNames.Add(txt_Team_ProjectName);
 
-            List_Panels[List_Panels.Count - 1].Controls.Add(txt_Team_ProjectName);
-            List_Panels[List_Panels.Count - 1].Controls.Add(comboBox_Team);
-            List_Panels[List_Panels.Count - 1].Controls.Add(comboBox_Status);
+                List_Panels[List_Panels.Count - 1].Controls.Add(txt_Team_ProjectName);
+                List_Panels[List_Panels.Count - 1].Controls.Add(comboBox_Team);
+                List_Panels[List_Panels.Count - 1].Controls.Add(comboBox_Status);
 
-            this.panel_Paint.Controls.Add(List_Panels[List_Panels.Count - 1]);
-        
+                this.panel_Paint.Controls.Add(List_Panels[List_Panels.Count - 1]);
+            }
+            else
+            {
+                //MessageBox.Show(SelectedPanelIndex.ToString()+":"+List_txt_ProjectNames[SelectedPanelIndex].Text);
+                System.Windows.Forms.Panel panel_Item = new Panel();
+                List_Panels.Add(panel_Item);
+                panel_Item.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+                panel_Item.Location = new System.Drawing.Point(28, 34 * (SelectedPanelIndex + 1) + 2);
+                panel_Item.Name = "panel_ItemDemo";
+                panel_Item.Size = new System.Drawing.Size(panel_Paint.Width - 30, 36);
+
+                System.Windows.Forms.ComboBox comboBox_Team = new ComboBox();
+                comboBox_Team.Dock = System.Windows.Forms.DockStyle.Right;
+                comboBox_Team.FormattingEnabled = true;
+                comboBox_Team.Items.AddRange(new object[] {
+            "AMI",
+            "ELA",
+            "GI",
+            "FP",
+            "PI and LT",
+            "Others"});
+                comboBox_Team.Location = new System.Drawing.Point(142, 0);
+                comboBox_Team.Name = "ComboBox_Team";
+                comboBox_Team.Size = new System.Drawing.Size(88, 37);
+                comboBox_Team.TabIndex = 2;
+
+                System.Windows.Forms.ComboBox comboBox_Status = new ComboBox();
+                comboBox_Status.Dock = System.Windows.Forms.DockStyle.Right;
+                comboBox_Status.FormattingEnabled = true;
+                comboBox_Status.Items.AddRange(new object[] {
+            "进行中",
+            "未启动",
+            "已完成"});
+                comboBox_Status.Location = new System.Drawing.Point(230, 0);
+                comboBox_Status.Name = "ComboBox_Status";
+                comboBox_Status.Size = new System.Drawing.Size(90, 37);
+                comboBox_Status.Sorted = true;
+                comboBox_Status.TabIndex = 1;
+
+                System.Windows.Forms.TextBox txt_Team_ProjectName = new TextBox();
+                txt_Team_ProjectName.Dock = System.Windows.Forms.DockStyle.Fill;
+                txt_Team_ProjectName.Location = new System.Drawing.Point(0, 0);
+                txt_Team_ProjectName.Name = "txt_Team_ProjectName";
+                txt_Team_ProjectName.Size = new System.Drawing.Size(142, 34);
+                txt_Team_ProjectName.TabIndex = 3;
+                txt_Team_ProjectName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Txt_ProjectName_MouseDown);
+                txt_Team_ProjectName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Txt_ProjectName_MouseMove);
+                txt_Team_ProjectName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Txt_ProjectName_MouseUp);
+                List_txt_ProjectNames.Add(txt_Team_ProjectName);
+
+                List_Panels[List_Panels.Count - 1].Controls.Add(txt_Team_ProjectName);
+                List_Panels[List_Panels.Count - 1].Controls.Add(comboBox_Team);
+                List_Panels[List_Panels.Count - 1].Controls.Add(comboBox_Status);
+
+                foreach (Panel item in panel_Paint.Controls)
+                {
+                    if (item.Top >= 34 * (SelectedPanelIndex + 1) + 2)
+                    {
+                        item.Top += 34;
+                    }
+                }
+                this.panel_Paint.Controls.Add(List_Panels[List_Panels.Count - 1]);
+            }
+            SortByY();
+            List_Panels = new List<Panel>();
+            List_txt_ProjectNames = new List<TextBox>();
+            for (int i = 0; i < idx.Count; i++)
+            {
+                List_Panels.Add((Panel)panel_Paint.Controls[idx[i]]);
+                List_txt_ProjectNames.Add((TextBox)panel_Paint.Controls[idx[i]].Controls[0]);
+            }
         }
 
         private void Txt_ProjectName_MouseDown(object sender, MouseEventArgs e)
         {
-            if (true)
+            if (e.Button == MouseButtons.Left)
             {
-                if (e.Button == MouseButtons.Left)
+                if (ChangeLocationEnable)
                 {
                     MoveFlag = true;//已经按下.
                     xPos = e.X;//当前x坐标.
                     yPos = e.Y;//当前y坐标.
-                    for (int i = 0; i < List_txt_ProjectNames.Count; i++)
+                }
+                //MessageBox.Show(sender.ToString());
+                for (int i = 0; i < List_txt_ProjectNames.Count; i++)
+                {
+                    if (sender.Equals(List_txt_ProjectNames[i]))
                     {
-                        if (sender.Equals(List_txt_ProjectNames[i]))
-                        {
-                            SelectedPanelIndex = i;
-                            startY = List_Panels[i].Top;
-                            List_Panels[i].Parent.Refresh();
-                            List_Panels[i].BringToFront();
-                            //fc = new FrameControl(panelCamArray[i]);
-                            //panelCamArray[i].Parent.Controls.Add(fc);
-                            //fc.Visible = true;
-                            //fc.Draw();
-                        }
+                        SelectedPanelIndex = i;
+                        startY = List_Panels[i].Top;
+                        List_Panels[i].Parent.Refresh();
+                        List_Panels[i].BringToFront();
+                        //fc = new FrameControl(panelCamArray[i]);
+                        //panelCamArray[i].Parent.Controls.Add(fc);
+                        //fc.Visible = true;
+                        //fc.Draw();
                     }
                 }
             }
+
         }
 
         private void Txt_ProjectName_MouseMove(object sender, MouseEventArgs e)
@@ -374,12 +460,22 @@ namespace FEC_Project_Dashboard
         {
             int CurY = List_Panels[SelectedPanelIndex].Top;
             this.panel_Paint.Controls.Remove(List_Panels[SelectedPanelIndex]);
+            //List_txt_ProjectNames.RemoveAt(SelectedPanelIndex);
+            //List_Panels.RemoveAt(SelectedPanelIndex);
             foreach (Panel item in panel_Paint.Controls)
             {
                 if (item.Top > CurY)
                 {
                     item.Top -= 34;
                 }
+            }
+            SortByY();
+            List_Panels = new List<Panel>();
+            List_txt_ProjectNames = new List<TextBox>();
+            for (int i = 0; i < idx.Count; i++)
+            {
+                List_Panels.Add((Panel)panel_Paint.Controls[idx[i]]);
+                List_txt_ProjectNames.Add((TextBox)panel_Paint.Controls[idx[i]].Controls[0]);
             }
         }
 
@@ -452,7 +548,21 @@ namespace FEC_Project_Dashboard
                     Index_Line++;
                 }
             }
+            SortByY();
             Filter();
+        }
+
+        private void panel_Paint_MouseDown(object sender, MouseEventArgs e)
+        {
+            SelectedPanelIndex = -1;
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            foreach (Panel item in panel_Paint.Controls)
+            {
+                item.Size = new System.Drawing.Size(panel_Paint.Width - 30, 36);
+            }
         }
     }
 }
