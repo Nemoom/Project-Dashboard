@@ -66,6 +66,65 @@ namespace FEC_Project_Dashboard
 
         }
 
+        //排序后输出
+        public void SortByY()
+        {
+            Ys = new List<int>();
+            for (int i = 0; i < panel_Paint.Controls.Count; i++)
+            {
+                Ys.Add(panel_Paint.Controls[i].Top);
+            }
+            var sorted = Ys
+                .Select((x, i) => new KeyValuePair<int, int>(x, i))
+                .OrderBy(x => x.Key)
+                .ToList();
+            Ys_Sort = sorted.Select(x => x.Key).ToList();
+            idx = sorted.Select(x => x.Value).ToList();
+        }
+
+        //筛选已完成&分行业
+        public void Filter() 
+        {
+            SortByY();//排序后输出
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            listBox3.Items.Clear();
+            listBox4.Items.Clear();
+            listBox5.Items.Clear();
+            listBox6.Items.Clear();
+            listBox7.Items.Clear();
+            for (int i = 0; i < idx.Count; i++)
+            {
+                if (panel_Paint.Controls[idx[i]].Controls[2].Text == "已完成")
+                {
+                    listBox7.Items.Add(panel_Paint.Controls[idx[i]].Controls[1].Text + "-" + panel_Paint.Controls[idx[i]].Controls[0].Text);
+                }
+                switch (panel_Paint.Controls[idx[i]].Controls[1].Text)
+                {
+                    case "AMI":
+                        listBox1.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                        break;
+                    case "ELA":
+                        listBox2.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                        break;
+                    case "GI":
+                        listBox3.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                        break;
+                    case "FP":
+                        listBox4.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                        break;
+                    case "PI and LT":
+                        listBox5.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                        break;
+                    case "Others":
+                        listBox6.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
+                        break;
+                    default:
+                        break;
+                }
+            }  
+        }
+
         private void MoveUp(Panel m_Panel, int destinationY)
         {
             foreach (Panel item in panel_Paint.Controls)
@@ -101,58 +160,8 @@ namespace FEC_Project_Dashboard
             }
             else
             {
-                ChangeLocationEnable = false; 
-                //排序后输出
-                Ys = new List<int>();                
-                for (int i = 0; i < panel_Paint.Controls.Count; i++)
-                {
-                    Ys.Add(panel_Paint.Controls[i].Top);
-                }
-                var sorted = Ys
-                    .Select((x, i) => new KeyValuePair<int, int>(x, i))
-                    .OrderBy(x => x.Key)
-                    .ToList();
-                Ys_Sort = sorted.Select(x => x.Key).ToList();
-                idx = sorted.Select(x => x.Value).ToList();
-                //筛选已完成&分行业
-                listBox1.Items.Clear();
-                listBox2.Items.Clear();
-                listBox3.Items.Clear();
-                listBox4.Items.Clear();
-                listBox5.Items.Clear();
-                listBox6.Items.Clear();
-                listBox7.Items.Clear();
-                for (int i = 0; i < idx.Count; i++)
-                {
-                    if (panel_Paint.Controls[idx[i]].Controls[2].Text=="已完成")
-                    {
-                        listBox7.Items.Add(panel_Paint.Controls[idx[i]].Controls[1].Text + "-" + panel_Paint.Controls[idx[i]].Controls[0].Text);
-                    }
-                    switch (panel_Paint.Controls[idx[i]].Controls[1].Text)
-                    {
-                        case "AMI":
-                            listBox1.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
-                            break;
-                        case "ELA":
-                            listBox2.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
-                            break;
-                        case "GI":
-                            listBox3.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
-                            break;
-                        case "FP":
-                            listBox4.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
-                            break;
-                        case "PI and LT":
-                            listBox5.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
-                            break;
-                        case "Others":
-                            listBox6.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
-                            break;
-                        default:
-                            break;
-                    }
-                }                
-
+                ChangeLocationEnable = false;
+                Filter();
                 ExportToCSV();
                 btn_Sort.Text = "排 序";
             }
@@ -363,7 +372,15 @@ namespace FEC_Project_Dashboard
 
         private void Btn_Delete_Click(object sender, EventArgs e)
         {
+            int CurY = List_Panels[SelectedPanelIndex].Top;
             this.panel_Paint.Controls.Remove(List_Panels[SelectedPanelIndex]);
+            foreach (Panel item in panel_Paint.Controls)
+            {
+                if (item.Top > CurY)
+                {
+                    item.Top -= 34;
+                }
+            }
         }
 
         private void Btn_Import_Click(object sender, EventArgs e)
@@ -392,6 +409,50 @@ namespace FEC_Project_Dashboard
                 }             
             }
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            FileInfo[] ArrayFileInfo;
+            //DirectoryInfo pDirectoryInfo = new DirectoryInfo(System.IO.Directory.GetCurrentDirectory()+"\\logs");
+            DirectoryInfo pDirectoryInfo = new DirectoryInfo("logs");
+            ArrayFileInfo = pDirectoryInfo.GetFiles();
+            DateTime mLastTime;
+            int LastIndex = 0;
+            if (ArrayFileInfo.Length >= 1)
+            {
+                mLastTime = ArrayFileInfo[0].CreationTime;
+                LastIndex = 0;
+                for (int i = 0; i < ArrayFileInfo.Length; i++)
+                {
+                    if (ArrayFileInfo[i].CreationTime > mLastTime)
+                    {
+                        mLastTime = ArrayFileInfo[i].CreationTime;
+                        LastIndex = i;
+                    }
+                }
+            }            
+            using (StreamReader read = new StreamReader(pDirectoryInfo.GetFiles()[LastIndex].FullName, true))
+            {
+                string aLine;
+                int Index_Line = 0;
+                while ((aLine = read.ReadLine()) != null)
+                {
+                    if (Index_Line != 0)
+                    {
+                        Btn_Add_Click(sender, e);
+                        panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[0].Text = aLine.Split(',')[1];
+                        panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[1].Text = aLine.Split(',')[2];
+                        panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[2].Text = aLine.Split(',')[3];
+                    }
+                    else
+                    {
+                        panel_Paint.Controls.Clear();
+                    }
+                    Index_Line++;
+                }
+            }
+            Filter();
         }
     }
 }

@@ -102,8 +102,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1422, 763);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -115,7 +115,7 @@
             this.label1.Location = new System.Drawing.Point(28, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1365, 108);
+            this.label1.Size = new System.Drawing.Size(1365, 86);
             this.label1.TabIndex = 0;
             this.label1.Text = "FEC项目管理看板";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -134,12 +134,12 @@
             this.tableLayoutPanel2.Controls.Add(this.panel_PILT, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel_Others, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(437, 131);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(437, 109);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(685, 608);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(685, 630);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel_AMI
@@ -149,7 +149,7 @@
             this.panel_AMI.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_AMI.Location = new System.Drawing.Point(4, 4);
             this.panel_AMI.Name = "panel_AMI";
-            this.panel_AMI.Size = new System.Drawing.Size(220, 296);
+            this.panel_AMI.Size = new System.Drawing.Size(220, 307);
             this.panel_AMI.TabIndex = 0;
             // 
             // listBox1
@@ -160,7 +160,7 @@
             this.listBox1.ItemHeight = 29;
             this.listBox1.Location = new System.Drawing.Point(0, 29);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(220, 267);
+            this.listBox1.Size = new System.Drawing.Size(220, 278);
             this.listBox1.TabIndex = 1;
             // 
             // label2
@@ -181,7 +181,7 @@
             this.panel_ELA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_ELA.Location = new System.Drawing.Point(231, 4);
             this.panel_ELA.Name = "panel_ELA";
-            this.panel_ELA.Size = new System.Drawing.Size(221, 296);
+            this.panel_ELA.Size = new System.Drawing.Size(221, 307);
             this.panel_ELA.TabIndex = 1;
             // 
             // listBox2
@@ -192,7 +192,7 @@
             this.listBox2.ItemHeight = 29;
             this.listBox2.Location = new System.Drawing.Point(0, 29);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(221, 267);
+            this.listBox2.Size = new System.Drawing.Size(221, 278);
             this.listBox2.TabIndex = 2;
             // 
             // label3
@@ -213,7 +213,7 @@
             this.panel_GI.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_GI.Location = new System.Drawing.Point(459, 4);
             this.panel_GI.Name = "panel_GI";
-            this.panel_GI.Size = new System.Drawing.Size(222, 296);
+            this.panel_GI.Size = new System.Drawing.Size(222, 307);
             this.panel_GI.TabIndex = 2;
             // 
             // listBox3
@@ -224,7 +224,7 @@
             this.listBox3.ItemHeight = 29;
             this.listBox3.Location = new System.Drawing.Point(0, 29);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(222, 267);
+            this.listBox3.Size = new System.Drawing.Size(222, 278);
             this.listBox3.TabIndex = 2;
             // 
             // label4
@@ -243,9 +243,9 @@
             this.panel_FP.Controls.Add(this.listBox4);
             this.panel_FP.Controls.Add(this.label5);
             this.panel_FP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_FP.Location = new System.Drawing.Point(4, 307);
+            this.panel_FP.Location = new System.Drawing.Point(4, 318);
             this.panel_FP.Name = "panel_FP";
-            this.panel_FP.Size = new System.Drawing.Size(220, 297);
+            this.panel_FP.Size = new System.Drawing.Size(220, 308);
             this.panel_FP.TabIndex = 3;
             // 
             // listBox4
@@ -256,7 +256,7 @@
             this.listBox4.ItemHeight = 29;
             this.listBox4.Location = new System.Drawing.Point(0, 29);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(220, 268);
+            this.listBox4.Size = new System.Drawing.Size(220, 279);
             this.listBox4.TabIndex = 2;
             // 
             // label5
@@ -275,9 +275,9 @@
             this.panel_PILT.Controls.Add(this.listBox5);
             this.panel_PILT.Controls.Add(this.label6);
             this.panel_PILT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_PILT.Location = new System.Drawing.Point(231, 307);
+            this.panel_PILT.Location = new System.Drawing.Point(231, 318);
             this.panel_PILT.Name = "panel_PILT";
-            this.panel_PILT.Size = new System.Drawing.Size(221, 297);
+            this.panel_PILT.Size = new System.Drawing.Size(221, 308);
             this.panel_PILT.TabIndex = 4;
             // 
             // listBox5
@@ -288,7 +288,7 @@
             this.listBox5.ItemHeight = 29;
             this.listBox5.Location = new System.Drawing.Point(0, 29);
             this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(221, 268);
+            this.listBox5.Size = new System.Drawing.Size(221, 279);
             this.listBox5.TabIndex = 2;
             // 
             // label6
@@ -307,9 +307,9 @@
             this.panel_Others.Controls.Add(this.listBox6);
             this.panel_Others.Controls.Add(this.label7);
             this.panel_Others.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Others.Location = new System.Drawing.Point(459, 307);
+            this.panel_Others.Location = new System.Drawing.Point(459, 318);
             this.panel_Others.Name = "panel_Others";
-            this.panel_Others.Size = new System.Drawing.Size(222, 297);
+            this.panel_Others.Size = new System.Drawing.Size(222, 308);
             this.panel_Others.TabIndex = 5;
             // 
             // listBox6
@@ -320,7 +320,7 @@
             this.listBox6.ItemHeight = 29;
             this.listBox6.Location = new System.Drawing.Point(0, 29);
             this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(222, 268);
+            this.listBox6.Size = new System.Drawing.Size(222, 279);
             this.listBox6.TabIndex = 2;
             // 
             // label7
@@ -341,9 +341,9 @@
             this.panel_ManualSorting.Controls.Add(this.tableLayoutPanel3);
             this.panel_ManualSorting.Controls.Add(this.label8);
             this.panel_ManualSorting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_ManualSorting.Location = new System.Drawing.Point(23, 131);
+            this.panel_ManualSorting.Location = new System.Drawing.Point(23, 109);
             this.panel_ManualSorting.Name = "panel_ManualSorting";
-            this.panel_ManualSorting.Size = new System.Drawing.Size(408, 608);
+            this.panel_ManualSorting.Size = new System.Drawing.Size(408, 630);
             this.panel_ManualSorting.TabIndex = 2;
             // 
             // panel_Paint
@@ -417,22 +417,22 @@
             this.tableLayoutPanel3.Controls.Add(this.btn_Delete, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_Add, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 481);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 528);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(406, 125);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(406, 100);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // btn_Sort
             // 
             this.btn_Sort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Sort.Location = new System.Drawing.Point(206, 65);
+            this.btn_Sort.Location = new System.Drawing.Point(206, 53);
             this.btn_Sort.Name = "btn_Sort";
-            this.btn_Sort.Size = new System.Drawing.Size(197, 57);
+            this.btn_Sort.Size = new System.Drawing.Size(197, 44);
             this.btn_Sort.TabIndex = 3;
             this.btn_Sort.Text = "排 序";
             this.btn_Sort.UseVisualStyleBackColor = true;
@@ -442,9 +442,9 @@
             // 
             this.btn_Import.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Import.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Import.Location = new System.Drawing.Point(3, 65);
+            this.btn_Import.Location = new System.Drawing.Point(3, 53);
             this.btn_Import.Name = "btn_Import";
-            this.btn_Import.Size = new System.Drawing.Size(197, 57);
+            this.btn_Import.Size = new System.Drawing.Size(197, 44);
             this.btn_Import.TabIndex = 2;
             this.btn_Import.Text = "导 入";
             this.btn_Import.UseVisualStyleBackColor = true;
@@ -456,7 +456,7 @@
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Delete.Location = new System.Drawing.Point(206, 3);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(197, 56);
+            this.btn_Delete.Size = new System.Drawing.Size(197, 44);
             this.btn_Delete.TabIndex = 1;
             this.btn_Delete.Text = "删 除";
             this.btn_Delete.UseVisualStyleBackColor = true;
@@ -468,7 +468,7 @@
             this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Add.Location = new System.Drawing.Point(3, 3);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(197, 56);
+            this.btn_Add.Size = new System.Drawing.Size(197, 44);
             this.btn_Add.TabIndex = 0;
             this.btn_Add.Text = "新 增";
             this.btn_Add.UseVisualStyleBackColor = true;
@@ -491,9 +491,9 @@
             this.panel_Finished.Controls.Add(this.panel1);
             this.panel_Finished.Controls.Add(this.label9);
             this.panel_Finished.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Finished.Location = new System.Drawing.Point(1128, 131);
+            this.panel_Finished.Location = new System.Drawing.Point(1128, 109);
             this.panel_Finished.Name = "panel_Finished";
-            this.panel_Finished.Size = new System.Drawing.Size(270, 608);
+            this.panel_Finished.Size = new System.Drawing.Size(270, 630);
             this.panel_Finished.TabIndex = 3;
             // 
             // panel1
@@ -505,7 +505,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 29);
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(268, 577);
+            this.panel1.Size = new System.Drawing.Size(268, 599);
             this.panel1.TabIndex = 4;
             // 
             // label9
@@ -530,7 +530,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 29);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(406, 452);
+            this.panel2.Size = new System.Drawing.Size(406, 499);
             this.panel2.TabIndex = 4;
             // 
             // listBox7
@@ -541,7 +541,7 @@
             this.listBox7.ItemHeight = 29;
             this.listBox7.Location = new System.Drawing.Point(0, 0);
             this.listBox7.Name = "listBox7";
-            this.listBox7.Size = new System.Drawing.Size(264, 573);
+            this.listBox7.Size = new System.Drawing.Size(264, 595);
             this.listBox7.TabIndex = 1;
             // 
             // Form1
@@ -556,6 +556,8 @@
             this.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
             this.Name = "Form1";
             this.Text = "FEC Project Dashboard";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel_AMI.ResumeLayout(false);
