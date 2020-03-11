@@ -432,7 +432,7 @@
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(185, 49);
             this.btn_Add.TabIndex = 0;
-            this.btn_Add.Text = "Insert";
+            this.btn_Add.Text = "Add New";
             this.btn_Add.UseVisualStyleBackColor = true;
             this.btn_Add.Click += new System.EventHandler(this.Btn_Add_Click);
             // 
@@ -558,7 +558,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(7, 10, 7, 10);
             this.Name = "Form1";
-            this.Text = "FEC Project Dashboard";
+            this.Text = "FEC Project Management Tool";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
