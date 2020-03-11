@@ -299,9 +299,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(0, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 29);
+            this.label6.Size = new System.Drawing.Size(85, 29);
             this.label6.TabIndex = 0;
-            this.label6.Text = "PI and LT";
+            this.label6.Text = "PI&&LT";
             // 
             // panel_Others
             // 
@@ -396,7 +396,7 @@
             this.btn_Sort.Name = "btn_Sort";
             this.btn_Sort.Size = new System.Drawing.Size(186, 49);
             this.btn_Sort.TabIndex = 3;
-            this.btn_Sort.Text = "排 序";
+            this.btn_Sort.Text = "Sort";
             this.btn_Sort.UseVisualStyleBackColor = true;
             this.btn_Sort.Click += new System.EventHandler(this.Btn_Sort_Click);
             // 
@@ -408,7 +408,7 @@
             this.btn_Import.Name = "btn_Import";
             this.btn_Import.Size = new System.Drawing.Size(185, 49);
             this.btn_Import.TabIndex = 2;
-            this.btn_Import.Text = "导 入";
+            this.btn_Import.Text = "Import";
             this.btn_Import.UseVisualStyleBackColor = true;
             this.btn_Import.Click += new System.EventHandler(this.Btn_Import_Click);
             // 
@@ -420,7 +420,7 @@
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(186, 49);
             this.btn_Delete.TabIndex = 1;
-            this.btn_Delete.Text = "删 除";
+            this.btn_Delete.Text = "Delete";
             this.btn_Delete.UseVisualStyleBackColor = true;
             this.btn_Delete.Click += new System.EventHandler(this.Btn_Delete_Click);
             // 
@@ -432,7 +432,7 @@
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(185, 49);
             this.btn_Add.TabIndex = 0;
-            this.btn_Add.Text = "新 增";
+            this.btn_Add.Text = "Insert";
             this.btn_Add.UseVisualStyleBackColor = true;
             this.btn_Add.Click += new System.EventHandler(this.Btn_Add_Click);
             // 
@@ -443,9 +443,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(113, 29);
+            this.label8.Size = new System.Drawing.Size(144, 29);
             this.label8.TabIndex = 1;
-            this.label8.Text = "项目列表";
+            this.label8.Text = "Project List";
             // 
             // panel_Finished
             // 
@@ -538,9 +538,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(0, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(138, 29);
+            this.label9.Size = new System.Drawing.Size(114, 29);
             this.label9.TabIndex = 1;
-            this.label9.Text = "已完成项目";
+            this.label9.Text = "Finished";
             // 
             // openFileDialog1
             // 

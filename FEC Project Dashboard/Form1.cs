@@ -95,7 +95,7 @@ namespace FEC_Project_Dashboard
             listBox7.Items.Clear();
             for (int i = 0; i < idx.Count; i++)
             {
-                if (panel_Paint.Controls[idx[i]].Controls[2].Text == "已完成")
+                if (panel_Paint.Controls[idx[i]].Controls[2].Text == "Finished")
                 {
                     listBox7.Items.Add(panel_Paint.Controls[idx[i]].Controls[1].Text + "-" + panel_Paint.Controls[idx[i]].Controls[0].Text);
                 }
@@ -113,7 +113,7 @@ namespace FEC_Project_Dashboard
                     case "FP":
                         listBox4.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
                         break;
-                    case "PI and LT":
+                    case "PI&LT":
                         listBox5.Items.Add(panel_Paint.Controls[idx[i]].Controls[0].Text);
                         break;
                     case "Others":
@@ -153,12 +153,12 @@ namespace FEC_Project_Dashboard
 
         private void Btn_Sort_Click(object sender, EventArgs e)
         {
-            if (btn_Sort.Text == "排 序")
+            if (btn_Sort.Text == "Sort")
             {
                 ChangeLocationEnable = true;
                 btn_Add.Enabled = false;
                 btn_Delete.Enabled = false;
-                btn_Sort.Text = "完 成";
+                btn_Sort.Text = "Done";
             }
             else
             {
@@ -175,7 +175,7 @@ namespace FEC_Project_Dashboard
                 ExportToCSV();
                 btn_Add.Enabled = true;
                 btn_Delete.Enabled = true;
-                btn_Sort.Text = "排 序";
+                btn_Sort.Text = "Sort";
             }
         }
 
@@ -194,27 +194,28 @@ namespace FEC_Project_Dashboard
                 comboBox_Team.Dock = System.Windows.Forms.DockStyle.Right;
                 comboBox_Team.FormattingEnabled = true;
                 comboBox_Team.Items.AddRange(new object[] {
-            "AMI",
-            "ELA",
-            "GI",
-            "FP",
-            "PI and LT",
-            "Others"});
+                "AMI",
+                "ELA",
+                "GI",
+                "FP",
+                "PI&LT",
+                "Others"});
                 comboBox_Team.Location = new System.Drawing.Point(142, 0);
                 comboBox_Team.Name = "ComboBox_Team";
-                comboBox_Team.Size = new System.Drawing.Size(88, 37);
+                comboBox_Team.Size = new System.Drawing.Size(80, 37);
                 comboBox_Team.TabIndex = 2;
 
                 System.Windows.Forms.ComboBox comboBox_Status = new ComboBox();
                 comboBox_Status.Dock = System.Windows.Forms.DockStyle.Right;
                 comboBox_Status.FormattingEnabled = true;
                 comboBox_Status.Items.AddRange(new object[] {
-            "进行中",
-            "未启动",
-            "已完成"});
+                "Not started",
+                "In progress",
+                "Finished",
+                "In evaluation"});
                 comboBox_Status.Location = new System.Drawing.Point(230, 0);
                 comboBox_Status.Name = "ComboBox_Status";
-                comboBox_Status.Size = new System.Drawing.Size(90, 37);
+                comboBox_Status.Size = new System.Drawing.Size(125, 37);
                 comboBox_Status.Sorted = true;
                 comboBox_Status.TabIndex = 1;
 
@@ -253,7 +254,7 @@ namespace FEC_Project_Dashboard
             "ELA",
             "GI",
             "FP",
-            "PI and LT",
+            "PI&LT",
             "Others"});
                 comboBox_Team.Location = new System.Drawing.Point(142, 0);
                 comboBox_Team.Name = "ComboBox_Team";
@@ -264,9 +265,10 @@ namespace FEC_Project_Dashboard
                 comboBox_Status.Dock = System.Windows.Forms.DockStyle.Right;
                 comboBox_Status.FormattingEnabled = true;
                 comboBox_Status.Items.AddRange(new object[] {
-            "进行中",
-            "未启动",
-            "已完成"});
+                "Not started",
+                "In progress",
+                "Finished",
+                "In evaluation"});
                 comboBox_Status.Location = new System.Drawing.Point(230, 0);
                 comboBox_Status.Name = "ComboBox_Status";
                 comboBox_Status.Size = new System.Drawing.Size(90, 37);
