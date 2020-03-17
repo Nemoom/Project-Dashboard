@@ -634,5 +634,65 @@ namespace FEC_Project_Dashboard
            
             
         }
+
+        private int GetRowFromPoint(int x, int y)
+        {
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                Rectangle rec = dataGridView1.GetRowDisplayRectangle(i, false);
+
+                if (dataGridView1.RectangleToScreen(rec).Contains(x, y))
+                    return i;
+            }
+
+            return -1;
+        }
+
+        private void DataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.Clicks < 2) && (e.Button == MouseButtons.Left))
+            {
+                if ((e.ColumnIndex == -1) && (e.RowIndex > -1))
+                    dataGridView1.DoDragDrop(dataGridView1.Rows[e.RowIndex], DragDropEffects.Move);
+            }
+        }
+
+        int selectionIdx;
+        private void DataGridView1_DragDrop(object sender, DragEventArgs e)
+        {
+            int idx = GetRowFromPoint(e.X, e.Y);
+
+            if (idx < 0) return;
+
+            if (e.Data.GetDataPresent(typeof(DataGridViewRow)))
+            {
+                DataGridViewRow row = (DataGridViewRow)e.Data.GetData(typeof(DataGridViewRow));
+                dataGridView1.Rows.Remove(row);
+                dataGridView1.Rows.Insert(idx, row);
+                selectionIdx = idx;
+            }
+        }
+
+        private void DataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+                selectionIdx = e.RowIndex;
+        }
+
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if ((dataGridView1.Rows.Count > 0) && (dataGridView1.SelectedRows.Count > 0) && (dataGridView1.SelectedRows[0].Index != selectionIdx))
+            {
+                if (dataGridView1.Rows.Count <= selectionIdx)
+                    selectionIdx = dataGridView1.Rows.Count - 1;
+                dataGridView1.Rows[selectionIdx].Selected = true;
+                dataGridView1.CurrentCell = dataGridView1.Rows[selectionIdx].Cells[0];
+            }
+        }
+
+        private void DataGridView1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
     }
 }
