@@ -566,5 +566,73 @@ namespace FEC_Project_Dashboard
                 item.Size = new System.Drawing.Size(panel_Paint.Width - 30, 36);
             }
         }
+
+        private void tsMenuItem_Import_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamReader read = new StreamReader(openFileDialog1.FileName, true))
+                {
+                    string aLine;
+                    int Index_Line = 0;
+                    while ((aLine = read.ReadLine()) != null)
+                    {
+                        if (Index_Line != 0)
+                        {
+                            Btn_Add_Click(sender, e);
+                            panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[0].Text = aLine.Split(',')[1];
+                            panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[1].Text = aLine.Split(',')[2];
+                            panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[2].Text = aLine.Split(',')[3];
+                        }
+                        else
+                        {
+                            panel_Paint.Controls.Clear();
+                        }
+                        Index_Line++;
+                    }
+                }
+            }
+        }
+
+        private void tsMenuItem_Export_Click(object sender, EventArgs e)
+        {
+            string line = string.Empty;
+            const string LOG_DIR = "logs";
+            string csvFilePath = Path.Combine(LOG_DIR, DateTime.Now.ToString("yyyy-MM-dd") + ".csv");
+            if (!Directory.Exists(LOG_DIR)) Directory.CreateDirectory(LOG_DIR);
+
+            if (File.Exists(csvFilePath))
+            {
+                File.Delete(csvFilePath);
+            }
+            //写入表头
+            using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
+            {
+                line = "No.,ProjectName,Team,Status,StartFrom,Duration,ClosingDate";
+                csvFile.WriteLine(line);
+            }
+            int mNo = 1;
+            using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
+            {
+                for (int i = 0; i < panel_Paint.Controls.Count; i++)
+                {
+                    if (panel_Paint.Controls[i].Visible)
+                    {
+                        line = mNo++.ToString() + "," + panel_Paint.Controls[idx[i]].Controls[0].Text
+                            + "," + panel_Paint.Controls[idx[i]].Controls[1].Text
+                            + "," + panel_Paint.Controls[idx[i]].Controls[2].Text;
+                        csvFile.WriteLine(line);
+                    }
+                }
+
+            }
+        }
+
+        private void tsbtn_AddNew_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Add();
+           
+            
+        }
     }
 }
