@@ -538,20 +538,20 @@ namespace FEC_Project_Dashboard
                 {
                     if (Index_Line != 0)
                     {
-                        Btn_Add_Click(sender, e);
-                        panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[0].Text = aLine.Split(',')[1];
-                        panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[1].Text = aLine.Split(',')[2];
-                        panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[2].Text = aLine.Split(',')[3];
+                        tsbtn_AddNew_Click(sender, e);
+                        for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                        {
+                            dataGridView1.Rows[Index_Line - 1].Cells[i].Value = aLine.Split(',')[i + 1];
+                        }
                     }
                     else
                     {
-                        panel_Paint.Controls.Clear();
+                        dataGridView1.Rows.Clear();
                     }
                     Index_Line++;
                 }
             }
-            SortByY();
-            Filter();
+            
         }
 
         private void panel_Paint_MouseDown(object sender, MouseEventArgs e)
@@ -579,14 +579,15 @@ namespace FEC_Project_Dashboard
                     {
                         if (Index_Line != 0)
                         {
-                            Btn_Add_Click(sender, e);
-                            panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[0].Text = aLine.Split(',')[1];
-                            panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[1].Text = aLine.Split(',')[2];
-                            panel_Paint.Controls[panel_Paint.Controls.Count - 1].Controls[2].Text = aLine.Split(',')[3];
+                            tsbtn_AddNew_Click(sender, e);
+                            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                            {
+                                dataGridView1.Rows[Index_Line - 1].Cells[i].Value = aLine.Split(',')[i + 1];                                 
+                            }
                         }
                         else
                         {
-                            panel_Paint.Controls.Clear();
+                            dataGridView1.Rows.Clear();
                         }
                         Index_Line++;
                     }
@@ -608,23 +609,30 @@ namespace FEC_Project_Dashboard
             //写入表头
             using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
             {
-                line = "No.,ProjectName,Team,Status,StartFrom,Duration,ClosingDate";
+                line = "No.,Project Name,Team,Status,Start From,Duration,Finish Date,Buget Forcast,Remark";
                 csvFile.WriteLine(line);
             }
-            int mNo = 1;
+            
             using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
             {
-                for (int i = 0; i < panel_Paint.Controls.Count; i++)
+                for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
-                    if (panel_Paint.Controls[i].Visible)
+                    line = (i + 1).ToString();
+                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
                     {
-                        line = mNo++.ToString() + "," + panel_Paint.Controls[idx[i]].Controls[0].Text
-                            + "," + panel_Paint.Controls[idx[i]].Controls[1].Text
-                            + "," + panel_Paint.Controls[idx[i]].Controls[2].Text;
-                        csvFile.WriteLine(line);
-                    }
-                }
+                        if (dataGridView1.Rows[i].Cells[j].Value==null)
+                        {
+                            line = line + ",";
 
+                        }
+                        else
+                        {
+                            line = line + "," + dataGridView1.Rows[i].Cells[j].Value.ToString();
+
+                        }
+                    }
+                    csvFile.WriteLine(line);                    
+                }
             }
         }
 
@@ -693,6 +701,307 @@ namespace FEC_Project_Dashboard
         private void DataGridView1_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var rowIdx = (e.RowIndex + 1).ToString();
+
+            var centerFormat = new StringFormat()
+            {
+                // right alignment might actually make more sense for numbers
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
+
+        }
+
+        private void SortConditionChanged()
+        {
+            tslbl_CurConditon.Text = "";
+            if (tsMenuItem_ByIndustry.Checked)
+            {
+                tslbl_CurConditon.Text = tslbl_CurConditon.Text + "Team=";
+                if (tsMenuItem_AMI.Checked)
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length-1,1)!="=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "AMI";
+                }
+                if (tsMenuItem_ELA.Checked)
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length - 1, 1) != "=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "ELA";
+                }
+                if ( tsMenuItem_PILT.Checked )
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length - 1, 1) != "=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "PI&&LT";
+                }
+                if (tsMenuItem_FP.Checked )
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length - 1, 1) != "=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "FP";
+                }
+                if ( tsMenuItem_GI.Checked )
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length - 1, 1) != "=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "GI";
+                }
+                if (tsMenuItem_Others.Checked)
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length - 1, 1) != "=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "Others";
+                }
+            }
+            
+            if (tsMenuItem_ByStatus.Checked)
+            {
+                if (tslbl_CurConditon.Text != "")
+                {
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + " and ";
+                }
+                tslbl_CurConditon.Text = tslbl_CurConditon.Text + "Status=";
+                if (tsMenuItem_NotStarted.Checked )
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length - 1, 1) != "=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "Not Started";
+                }
+                if (tsMenuItem_InProgress.Checked )
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length - 1, 1) != "=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "In Progress";
+                }
+                if ( tsMenuItem_Finished.Checked )
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length - 1, 1) != "=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "Finished";
+                }
+                if (tsMenuItem_InEvaluation.Checked)
+                {
+                    if (tslbl_CurConditon.Text.Substring(tslbl_CurConditon.Text.Length - 1, 1) != "=")
+                    {
+                        tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
+                    }
+                    tslbl_CurConditon.Text = tslbl_CurConditon.Text + "In Evaluation";
+                }
+            }
+        }
+
+        private void tsMenuItem_AMI_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_AMI.Checked = !tsMenuItem_AMI.Checked;
+            if (tsMenuItem_AMI.Checked || tsMenuItem_ELA.Checked || tsMenuItem_PILT.Checked || tsMenuItem_FP.Checked || tsMenuItem_GI.Checked || tsMenuItem_Others.Checked)
+            {
+                tsMenuItem_ByIndustry.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByIndustry.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_ELA_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_ELA.Checked = !tsMenuItem_ELA.Checked;
+            if (tsMenuItem_AMI.Checked || tsMenuItem_ELA.Checked || tsMenuItem_PILT.Checked || tsMenuItem_FP.Checked || tsMenuItem_GI.Checked || tsMenuItem_Others.Checked)
+            {
+                tsMenuItem_ByIndustry.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByIndustry.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_PILT_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_PILT.Checked = !tsMenuItem_PILT.Checked;
+            if (tsMenuItem_AMI.Checked || tsMenuItem_ELA.Checked || tsMenuItem_PILT.Checked || tsMenuItem_FP.Checked || tsMenuItem_GI.Checked || tsMenuItem_Others.Checked)
+            {
+                tsMenuItem_ByIndustry.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByIndustry.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_FP_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_FP.Checked = !tsMenuItem_FP.Checked;
+            if (tsMenuItem_AMI.Checked || tsMenuItem_ELA.Checked || tsMenuItem_PILT.Checked || tsMenuItem_FP.Checked || tsMenuItem_GI.Checked || tsMenuItem_Others.Checked)
+            {
+                tsMenuItem_ByIndustry.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByIndustry.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_GI_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_GI.Checked = !tsMenuItem_GI.Checked;
+            if (tsMenuItem_AMI.Checked || tsMenuItem_ELA.Checked || tsMenuItem_PILT.Checked || tsMenuItem_FP.Checked || tsMenuItem_GI.Checked || tsMenuItem_Others.Checked)
+            {
+                tsMenuItem_ByIndustry.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByIndustry.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_Others_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_Others.Checked = !tsMenuItem_Others.Checked;
+            if (tsMenuItem_AMI.Checked || tsMenuItem_ELA.Checked || tsMenuItem_PILT.Checked || tsMenuItem_FP.Checked || tsMenuItem_GI.Checked || tsMenuItem_Others.Checked)
+            {
+                tsMenuItem_ByIndustry.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByIndustry.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_NotStarted_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_NotStarted.Checked = !tsMenuItem_NotStarted.Checked;
+            if (tsMenuItem_NotStarted.Checked || tsMenuItem_InProgress.Checked || tsMenuItem_Finished.Checked || tsMenuItem_InEvaluation.Checked)
+            {
+                tsMenuItem_ByStatus.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByStatus.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_InProgress_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_InProgress.Checked = !tsMenuItem_InProgress.Checked;
+            if (tsMenuItem_NotStarted.Checked || tsMenuItem_InProgress.Checked || tsMenuItem_Finished.Checked || tsMenuItem_InEvaluation.Checked)
+            {
+                tsMenuItem_ByStatus.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByStatus.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_Finished_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_Finished.Checked = !tsMenuItem_Finished.Checked;
+            if (tsMenuItem_NotStarted.Checked || tsMenuItem_InProgress.Checked || tsMenuItem_Finished.Checked || tsMenuItem_InEvaluation.Checked)
+            {
+                tsMenuItem_ByStatus.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByStatus.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_InEvaluation_Click(object sender, EventArgs e)
+        {
+            tsMenuItem_InEvaluation.Checked = !tsMenuItem_InEvaluation.Checked;
+            if (tsMenuItem_NotStarted.Checked || tsMenuItem_InProgress.Checked || tsMenuItem_Finished.Checked || tsMenuItem_InEvaluation.Checked)
+            {
+                tsMenuItem_ByStatus.Checked = true;
+            }
+            else
+            {
+                tsMenuItem_ByStatus.Checked = false;
+            }
+            SortConditionChanged();
+        }
+
+        private void tsMenuItem_ByIndustry_Click(object sender, EventArgs e)
+        {
+            //if (tsMenuItem_ByIndustry.Checked)
+            //{
+            //    tsMenuItem_ByIndustry.Checked = false;
+            //    tsMenuItem_AMI.Checked = false;
+            //    tsMenuItem_ELA.Checked = false;
+            //    tsMenuItem_PILT.Checked = false;
+            //    tsMenuItem_FP.Checked = false;
+            //    tsMenuItem_GI.Checked = false;
+            //    tsMenuItem_Others.Checked = false;
+            //}
+            //else
+            //{
+            //    tsMenuItem_ByIndustry.Checked = true;
+            //    tsMenuItem_AMI.Checked = true;
+            //    tsMenuItem_ELA.Checked = true;
+            //    tsMenuItem_PILT.Checked = true;
+            //    tsMenuItem_FP.Checked = true;
+            //    tsMenuItem_GI.Checked = true;
+            //    tsMenuItem_Others.Checked = true;
+            //}
+            //SortConditionChanged();
+        }
+
+        private void tsMenuItem_ByStatus_Click(object sender, EventArgs e)
+        {
+            //if (tsMenuItem_ByStatus.Checked)
+            //{
+            //    tsMenuItem_ByStatus.Checked = false;
+            //    tsMenuItem_NotStarted.Checked = false;
+            //    tsMenuItem_InProgress.Checked = false;
+            //    tsMenuItem_Finished.Checked = false;
+            //    tsMenuItem_InEvaluation.Checked = false;
+            //}
+            //else
+            //{
+            //    tsMenuItem_ByStatus.Checked = true;
+            //    tsMenuItem_NotStarted.Checked = true;
+            //    tsMenuItem_InProgress.Checked = true;
+            //    tsMenuItem_Finished.Checked = true;
+            //    tsMenuItem_InEvaluation.Checked = true;
+            //}
+            //SortConditionChanged();
         }
     }
 }

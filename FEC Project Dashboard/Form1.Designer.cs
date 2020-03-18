@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_Others = new System.Windows.Forms.Panel();
             this.listBox6 = new System.Windows.Forms.ListBox();
@@ -70,14 +69,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel_Main = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column_ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Team = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_Status = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_StartFrom = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_Duration = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_FinishDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_BugetForcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsdbtn_File = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsMenuItem_Import = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,6 +91,14 @@
             this.tsMenuItem_InEvaluation = new System.Windows.Forms.ToolStripMenuItem();
             this.tslbl_CurConditon = new System.Windows.Forms.ToolStripLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Column_ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Team = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_Status = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_StartFrom = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_Duration = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_FinishDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_BugetForcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel_Others.SuspendLayout();
             this.panel_GI.SuspendLayout();
@@ -121,14 +120,14 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 8;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 7F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.67F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.67F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.67F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.67F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.Controls.Add(this.panel_Others, 6, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_GI, 5, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_ELA, 2, 3);
@@ -141,15 +140,15 @@
             this.tableLayoutPanel1.Controls.Add(this.panel_Main, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1422, 763);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1219, 710);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel_Others
@@ -158,33 +157,33 @@
             this.panel_Others.Controls.Add(this.listBox6);
             this.panel_Others.Controls.Add(this.label7);
             this.panel_Others.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Others.Location = new System.Drawing.Point(1174, 619);
+            this.panel_Others.Location = new System.Drawing.Point(1003, 577);
             this.panel_Others.Margin = new System.Windows.Forms.Padding(2);
             this.panel_Others.Name = "panel_Others";
-            this.panel_Others.Size = new System.Drawing.Size(229, 129);
+            this.panel_Others.Size = new System.Drawing.Size(195, 120);
             this.panel_Others.TabIndex = 5;
             // 
             // listBox6
             // 
             this.listBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox6.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox6.FormattingEnabled = true;
-            this.listBox6.ItemHeight = 29;
-            this.listBox6.Location = new System.Drawing.Point(0, 29);
+            this.listBox6.ItemHeight = 27;
+            this.listBox6.Location = new System.Drawing.Point(0, 28);
             this.listBox6.Margin = new System.Windows.Forms.Padding(2);
             this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(227, 98);
+            this.listBox6.Size = new System.Drawing.Size(193, 90);
             this.listBox6.TabIndex = 2;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(0, 0);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 29);
+            this.label7.Size = new System.Drawing.Size(79, 28);
             this.label7.TabIndex = 0;
             this.label7.Text = "Others";
             // 
@@ -194,33 +193,33 @@
             this.panel_GI.Controls.Add(this.listBox3);
             this.panel_GI.Controls.Add(this.label4);
             this.panel_GI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GI.Location = new System.Drawing.Point(941, 619);
+            this.panel_GI.Location = new System.Drawing.Point(804, 577);
             this.panel_GI.Margin = new System.Windows.Forms.Padding(2);
             this.panel_GI.Name = "panel_GI";
-            this.panel_GI.Size = new System.Drawing.Size(229, 129);
+            this.panel_GI.Size = new System.Drawing.Size(195, 120);
             this.panel_GI.TabIndex = 2;
             // 
             // listBox3
             // 
             this.listBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox3.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 29;
-            this.listBox3.Location = new System.Drawing.Point(0, 29);
+            this.listBox3.ItemHeight = 27;
+            this.listBox3.Location = new System.Drawing.Point(0, 28);
             this.listBox3.Margin = new System.Windows.Forms.Padding(2);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(227, 98);
+            this.listBox3.Size = new System.Drawing.Size(193, 90);
             this.listBox3.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 29);
+            this.label4.Size = new System.Drawing.Size(34, 28);
             this.label4.TabIndex = 0;
             this.label4.Text = "GI";
             // 
@@ -230,33 +229,33 @@
             this.panel_ELA.Controls.Add(this.listBox2);
             this.panel_ELA.Controls.Add(this.label3);
             this.panel_ELA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_ELA.Location = new System.Drawing.Point(242, 619);
+            this.panel_ELA.Location = new System.Drawing.Point(207, 577);
             this.panel_ELA.Margin = new System.Windows.Forms.Padding(2);
             this.panel_ELA.Name = "panel_ELA";
-            this.panel_ELA.Size = new System.Drawing.Size(229, 129);
+            this.panel_ELA.Size = new System.Drawing.Size(195, 120);
             this.panel_ELA.TabIndex = 1;
             // 
             // listBox2
             // 
             this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox2.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 29;
-            this.listBox2.Location = new System.Drawing.Point(0, 29);
+            this.listBox2.ItemHeight = 27;
+            this.listBox2.Location = new System.Drawing.Point(0, 28);
             this.listBox2.Margin = new System.Windows.Forms.Padding(2);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(227, 98);
+            this.listBox2.Size = new System.Drawing.Size(193, 90);
             this.listBox2.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 29);
+            this.label3.Size = new System.Drawing.Size(48, 28);
             this.label3.TabIndex = 0;
             this.label3.Text = "ELA";
             // 
@@ -266,33 +265,33 @@
             this.panel_FP.Controls.Add(this.listBox4);
             this.panel_FP.Controls.Add(this.label5);
             this.panel_FP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_FP.Location = new System.Drawing.Point(708, 619);
+            this.panel_FP.Location = new System.Drawing.Point(605, 577);
             this.panel_FP.Margin = new System.Windows.Forms.Padding(2);
             this.panel_FP.Name = "panel_FP";
-            this.panel_FP.Size = new System.Drawing.Size(229, 129);
+            this.panel_FP.Size = new System.Drawing.Size(195, 120);
             this.panel_FP.TabIndex = 3;
             // 
             // listBox4
             // 
             this.listBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox4.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 29;
-            this.listBox4.Location = new System.Drawing.Point(0, 29);
+            this.listBox4.ItemHeight = 27;
+            this.listBox4.Location = new System.Drawing.Point(0, 28);
             this.listBox4.Margin = new System.Windows.Forms.Padding(2);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(227, 98);
+            this.listBox4.Size = new System.Drawing.Size(193, 90);
             this.listBox4.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 29);
+            this.label5.Size = new System.Drawing.Size(36, 28);
             this.label5.TabIndex = 0;
             this.label5.Text = "FP";
             // 
@@ -302,33 +301,33 @@
             this.panel_AMI.Controls.Add(this.listBox1);
             this.panel_AMI.Controls.Add(this.label2);
             this.panel_AMI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_AMI.Location = new System.Drawing.Point(9, 619);
+            this.panel_AMI.Location = new System.Drawing.Point(8, 577);
             this.panel_AMI.Margin = new System.Windows.Forms.Padding(2);
             this.panel_AMI.Name = "panel_AMI";
-            this.panel_AMI.Size = new System.Drawing.Size(229, 129);
+            this.panel_AMI.Size = new System.Drawing.Size(195, 120);
             this.panel_AMI.TabIndex = 0;
             // 
             // listBox1
             // 
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 29;
-            this.listBox1.Location = new System.Drawing.Point(0, 29);
+            this.listBox1.ItemHeight = 27;
+            this.listBox1.Location = new System.Drawing.Point(0, 28);
             this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(227, 98);
+            this.listBox1.Size = new System.Drawing.Size(193, 90);
             this.listBox1.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 29);
+            this.label2.Size = new System.Drawing.Size(51, 28);
             this.label2.TabIndex = 0;
             this.label2.Text = "AMI";
             // 
@@ -338,11 +337,11 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 6);
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 11);
+            this.label1.Font = new System.Drawing.Font("MetaPlusLF", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1394, 88);
+            this.label1.Size = new System.Drawing.Size(1190, 82);
             this.label1.TabIndex = 0;
             this.label1.Text = "FEC Project Management Tool";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -353,33 +352,33 @@
             this.panel_PILT.Controls.Add(this.listBox5);
             this.panel_PILT.Controls.Add(this.label6);
             this.panel_PILT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_PILT.Location = new System.Drawing.Point(475, 619);
+            this.panel_PILT.Location = new System.Drawing.Point(406, 577);
             this.panel_PILT.Margin = new System.Windows.Forms.Padding(2);
             this.panel_PILT.Name = "panel_PILT";
-            this.panel_PILT.Size = new System.Drawing.Size(229, 129);
+            this.panel_PILT.Size = new System.Drawing.Size(195, 120);
             this.panel_PILT.TabIndex = 4;
             // 
             // listBox5
             // 
             this.listBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox5.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox5.FormattingEnabled = true;
-            this.listBox5.ItemHeight = 29;
-            this.listBox5.Location = new System.Drawing.Point(0, 29);
+            this.listBox5.ItemHeight = 27;
+            this.listBox5.Location = new System.Drawing.Point(0, 28);
             this.listBox5.Margin = new System.Windows.Forms.Padding(2);
             this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(227, 98);
+            this.listBox5.Size = new System.Drawing.Size(193, 90);
             this.listBox5.TabIndex = 2;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(0, 0);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 29);
+            this.label6.Size = new System.Drawing.Size(71, 28);
             this.label6.TabIndex = 0;
             this.label6.Text = "PI&&LT";
             // 
@@ -388,10 +387,10 @@
             this.panel_Finished.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Finished.Controls.Add(this.panel1);
             this.panel_Finished.Controls.Add(this.label9);
-            this.panel_Finished.Location = new System.Drawing.Point(708, 752);
+            this.panel_Finished.Location = new System.Drawing.Point(605, 701);
             this.panel_Finished.Margin = new System.Windows.Forms.Padding(2);
             this.panel_Finished.Name = "panel_Finished";
-            this.panel_Finished.Size = new System.Drawing.Size(106, 9);
+            this.panel_Finished.Size = new System.Drawing.Size(91, 7);
             this.panel_Finished.TabIndex = 3;
             this.panel_Finished.Visible = false;
             // 
@@ -404,7 +403,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 29);
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(104, 0);
+            this.panel1.Size = new System.Drawing.Size(89, 0);
             this.panel1.TabIndex = 4;
             // 
             // listBox7
@@ -416,7 +415,7 @@
             this.listBox7.Location = new System.Drawing.Point(0, 0);
             this.listBox7.Margin = new System.Windows.Forms.Padding(2);
             this.listBox7.Name = "listBox7";
-            this.listBox7.Size = new System.Drawing.Size(104, 0);
+            this.listBox7.Size = new System.Drawing.Size(89, 0);
             this.listBox7.TabIndex = 1;
             // 
             // panel_ItemDemo
@@ -425,10 +424,10 @@
             this.panel_ItemDemo.Controls.Add(this.ComboBox_TeamDemo);
             this.panel_ItemDemo.Controls.Add(this.ComboBox_StatusDemo);
             this.panel_ItemDemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            this.panel_ItemDemo.Location = new System.Drawing.Point(8, 10);
+            this.panel_ItemDemo.Location = new System.Drawing.Point(7, 9);
             this.panel_ItemDemo.Margin = new System.Windows.Forms.Padding(2);
             this.panel_ItemDemo.Name = "panel_ItemDemo";
-            this.panel_ItemDemo.Size = new System.Drawing.Size(166, 26);
+            this.panel_ItemDemo.Size = new System.Drawing.Size(142, 24);
             this.panel_ItemDemo.TabIndex = 0;
             this.panel_ItemDemo.Visible = false;
             // 
@@ -438,7 +437,7 @@
             this.txt_Team_ProjectNameDemo.Location = new System.Drawing.Point(0, 0);
             this.txt_Team_ProjectNameDemo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Team_ProjectNameDemo.Name = "txt_Team_ProjectNameDemo";
-            this.txt_Team_ProjectNameDemo.Size = new System.Drawing.Size(77, 34);
+            this.txt_Team_ProjectNameDemo.Size = new System.Drawing.Size(67, 34);
             this.txt_Team_ProjectNameDemo.TabIndex = 3;
             // 
             // ComboBox_TeamDemo
@@ -452,10 +451,10 @@
             "FP",
             "PI and LT",
             "Others"});
-            this.ComboBox_TeamDemo.Location = new System.Drawing.Point(77, 0);
+            this.ComboBox_TeamDemo.Location = new System.Drawing.Point(66, 0);
             this.ComboBox_TeamDemo.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBox_TeamDemo.Name = "ComboBox_TeamDemo";
-            this.ComboBox_TeamDemo.Size = new System.Drawing.Size(44, 37);
+            this.ComboBox_TeamDemo.Size = new System.Drawing.Size(38, 37);
             this.ComboBox_TeamDemo.TabIndex = 2;
             // 
             // ComboBox_StatusDemo
@@ -466,10 +465,10 @@
             "进行中",
             "未启动",
             "已完成"});
-            this.ComboBox_StatusDemo.Location = new System.Drawing.Point(121, 0);
+            this.ComboBox_StatusDemo.Location = new System.Drawing.Point(104, 0);
             this.ComboBox_StatusDemo.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBox_StatusDemo.Name = "ComboBox_StatusDemo";
-            this.ComboBox_StatusDemo.Size = new System.Drawing.Size(45, 37);
+            this.ComboBox_StatusDemo.Size = new System.Drawing.Size(39, 37);
             this.ComboBox_StatusDemo.Sorted = true;
             this.ComboBox_StatusDemo.TabIndex = 1;
             // 
@@ -491,10 +490,10 @@
             this.panel_ManualSorting.Controls.Add(this.panel2);
             this.panel_ManualSorting.Controls.Add(this.tableLayoutPanel_Buttons);
             this.panel_ManualSorting.Controls.Add(this.label8);
-            this.panel_ManualSorting.Location = new System.Drawing.Point(475, 752);
+            this.panel_ManualSorting.Location = new System.Drawing.Point(406, 701);
             this.panel_ManualSorting.Margin = new System.Windows.Forms.Padding(2);
             this.panel_ManualSorting.Name = "panel_ManualSorting";
-            this.panel_ManualSorting.Size = new System.Drawing.Size(106, 9);
+            this.panel_ManualSorting.Size = new System.Drawing.Size(91, 7);
             this.panel_ManualSorting.TabIndex = 2;
             this.panel_ManualSorting.Visible = false;
             // 
@@ -506,7 +505,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 29);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(104, 0);
+            this.panel2.Size = new System.Drawing.Size(89, 0);
             this.panel2.TabIndex = 4;
             // 
             // panel_Paint
@@ -517,7 +516,7 @@
             this.panel_Paint.Location = new System.Drawing.Point(0, 0);
             this.panel_Paint.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.panel_Paint.Name = "panel_Paint";
-            this.panel_Paint.Size = new System.Drawing.Size(104, 578);
+            this.panel_Paint.Size = new System.Drawing.Size(89, 538);
             this.panel_Paint.TabIndex = 3;
             this.panel_Paint.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_Paint_MouseDown);
             // 
@@ -534,21 +533,21 @@
             this.tableLayoutPanel_Buttons.Controls.Add(this.btn_Import, 2, 0);
             this.tableLayoutPanel_Buttons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel_Buttons.Location = new System.Drawing.Point(0, -29);
-            this.tableLayoutPanel_Buttons.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.tableLayoutPanel_Buttons.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.tableLayoutPanel_Buttons.Name = "tableLayoutPanel_Buttons";
             this.tableLayoutPanel_Buttons.RowCount = 1;
             this.tableLayoutPanel_Buttons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel_Buttons.Size = new System.Drawing.Size(104, 36);
+            this.tableLayoutPanel_Buttons.Size = new System.Drawing.Size(89, 34);
             this.tableLayoutPanel_Buttons.TabIndex = 2;
             // 
             // btn_Delete
             // 
             this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Delete.Location = new System.Drawing.Point(28, 2);
+            this.btn_Delete.Location = new System.Drawing.Point(24, 2);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(22, 32);
+            this.btn_Delete.Size = new System.Drawing.Size(18, 30);
             this.btn_Delete.TabIndex = 1;
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.UseVisualStyleBackColor = true;
@@ -561,7 +560,7 @@
             this.btn_Add.Location = new System.Drawing.Point(2, 2);
             this.btn_Add.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(22, 32);
+            this.btn_Add.Size = new System.Drawing.Size(18, 30);
             this.btn_Add.TabIndex = 0;
             this.btn_Add.Text = "Add New";
             this.btn_Add.UseVisualStyleBackColor = true;
@@ -571,10 +570,10 @@
             // 
             this.btn_Sort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Sort.Location = new System.Drawing.Point(80, 2);
+            this.btn_Sort.Location = new System.Drawing.Point(68, 2);
             this.btn_Sort.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Sort.Name = "btn_Sort";
-            this.btn_Sort.Size = new System.Drawing.Size(22, 32);
+            this.btn_Sort.Size = new System.Drawing.Size(19, 30);
             this.btn_Sort.TabIndex = 3;
             this.btn_Sort.Text = "Sort";
             this.btn_Sort.UseVisualStyleBackColor = true;
@@ -584,10 +583,10 @@
             // 
             this.btn_Import.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Import.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Import.Location = new System.Drawing.Point(54, 2);
+            this.btn_Import.Location = new System.Drawing.Point(46, 2);
             this.btn_Import.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Import.Name = "btn_Import";
-            this.btn_Import.Size = new System.Drawing.Size(22, 32);
+            this.btn_Import.Size = new System.Drawing.Size(18, 30);
             this.btn_Import.TabIndex = 2;
             this.btn_Import.Text = "Import";
             this.btn_Import.UseVisualStyleBackColor = true;
@@ -611,16 +610,27 @@
             this.panel_Main.Controls.Add(this.dataGridView1);
             this.panel_Main.Controls.Add(this.toolStrip1);
             this.panel_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Main.Location = new System.Drawing.Point(9, 101);
+            this.panel_Main.Location = new System.Drawing.Point(8, 94);
             this.panel_Main.Margin = new System.Windows.Forms.Padding(2);
             this.panel_Main.Name = "panel_Main";
-            this.panel_Main.Size = new System.Drawing.Size(1394, 514);
+            this.panel_Main.Size = new System.Drawing.Size(1190, 479);
             this.panel_Main.TabIndex = 6;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowDrop = true;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_ProjectName,
@@ -632,32 +642,228 @@
             this.Column_BugetForcast,
             this.Column_Remark});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 34);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1394, 482);
+            this.dataGridView1.Size = new System.Drawing.Size(1190, 445);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView1_CellMouseDown);
             this.dataGridView1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView1_CellMouseMove);
+            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DataGridView1_DragDrop);
             this.dataGridView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.DataGridView1_DragEnter);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsdbtn_File,
+            this.tsbtn_AddNew,
+            this.tsbtn_Delete,
+            this.tsbtn_Sort,
+            this.tsdbtn_Filter,
+            this.tslbl_CurConditon});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1190, 34);
+            this.toolStrip1.TabIndex = 7;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsdbtn_File
+            // 
+            this.tsdbtn_File.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsdbtn_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuItem_Import,
+            this.tsMenuItem_Export});
+            this.tsdbtn_File.Image = ((System.Drawing.Image)(resources.GetObject("tsdbtn_File.Image")));
+            this.tsdbtn_File.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsdbtn_File.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tsdbtn_File.Name = "tsdbtn_File";
+            this.tsdbtn_File.ShowDropDownArrow = false;
+            this.tsdbtn_File.Size = new System.Drawing.Size(74, 31);
+            this.tsdbtn_File.Text = "File(F)";
+            // 
+            // tsMenuItem_Import
+            // 
+            this.tsMenuItem_Import.Name = "tsMenuItem_Import";
+            this.tsMenuItem_Import.Size = new System.Drawing.Size(172, 32);
+            this.tsMenuItem_Import.Text = "Import(I)";
+            this.tsMenuItem_Import.Click += new System.EventHandler(this.tsMenuItem_Import_Click);
+            // 
+            // tsMenuItem_Export
+            // 
+            this.tsMenuItem_Export.Name = "tsMenuItem_Export";
+            this.tsMenuItem_Export.Size = new System.Drawing.Size(172, 32);
+            this.tsMenuItem_Export.Text = "Export(E)";
+            this.tsMenuItem_Export.Click += new System.EventHandler(this.tsMenuItem_Export_Click);
+            // 
+            // tsbtn_AddNew
+            // 
+            this.tsbtn_AddNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtn_AddNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbtn_AddNew.Image")));
+            this.tsbtn_AddNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtn_AddNew.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tsbtn_AddNew.Name = "tsbtn_AddNew";
+            this.tsbtn_AddNew.Size = new System.Drawing.Size(130, 31);
+            this.tsbtn_AddNew.Text = "Add New(A)";
+            this.tsbtn_AddNew.Click += new System.EventHandler(this.tsbtn_AddNew_Click);
+            // 
+            // tsbtn_Delete
+            // 
+            this.tsbtn_Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtn_Delete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtn_Delete.Image")));
+            this.tsbtn_Delete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtn_Delete.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tsbtn_Delete.Name = "tsbtn_Delete";
+            this.tsbtn_Delete.Size = new System.Drawing.Size(109, 31);
+            this.tsbtn_Delete.Text = "Delete(D)";
+            // 
+            // tsbtn_Sort
+            // 
+            this.tsbtn_Sort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtn_Sort.Image = ((System.Drawing.Image)(resources.GetObject("tsbtn_Sort.Image")));
+            this.tsbtn_Sort.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtn_Sort.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tsbtn_Sort.Name = "tsbtn_Sort";
+            this.tsbtn_Sort.Size = new System.Drawing.Size(83, 31);
+            this.tsbtn_Sort.Text = "Sort(S)";
+            this.tsbtn_Sort.Visible = false;
+            // 
+            // tsdbtn_Filter
+            // 
+            this.tsdbtn_Filter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsdbtn_Filter.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuItem_ByIndustry,
+            this.tsMenuItem_ByStatus});
+            this.tsdbtn_Filter.Image = ((System.Drawing.Image)(resources.GetObject("tsdbtn_Filter.Image")));
+            this.tsdbtn_Filter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsdbtn_Filter.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tsdbtn_Filter.Name = "tsdbtn_Filter";
+            this.tsdbtn_Filter.Size = new System.Drawing.Size(74, 31);
+            this.tsdbtn_Filter.Text = "Filter";
+            // 
+            // tsMenuItem_ByIndustry
+            // 
+            this.tsMenuItem_ByIndustry.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuItem_AMI,
+            this.tsMenuItem_ELA,
+            this.tsMenuItem_PILT,
+            this.tsMenuItem_FP,
+            this.tsMenuItem_GI,
+            this.tsMenuItem_Others});
+            this.tsMenuItem_ByIndustry.Name = "tsMenuItem_ByIndustry";
+            this.tsMenuItem_ByIndustry.Size = new System.Drawing.Size(194, 32);
+            this.tsMenuItem_ByIndustry.Text = "By Industry";
+            this.tsMenuItem_ByIndustry.Click += new System.EventHandler(this.tsMenuItem_ByIndustry_Click);
+            // 
+            // tsMenuItem_AMI
+            // 
+            this.tsMenuItem_AMI.Name = "tsMenuItem_AMI";
+            this.tsMenuItem_AMI.Size = new System.Drawing.Size(152, 32);
+            this.tsMenuItem_AMI.Text = "AMI";
+            this.tsMenuItem_AMI.Click += new System.EventHandler(this.tsMenuItem_AMI_Click);
+            // 
+            // tsMenuItem_ELA
+            // 
+            this.tsMenuItem_ELA.Name = "tsMenuItem_ELA";
+            this.tsMenuItem_ELA.Size = new System.Drawing.Size(152, 32);
+            this.tsMenuItem_ELA.Text = "ELA";
+            this.tsMenuItem_ELA.Click += new System.EventHandler(this.tsMenuItem_ELA_Click);
+            // 
+            // tsMenuItem_PILT
+            // 
+            this.tsMenuItem_PILT.Name = "tsMenuItem_PILT";
+            this.tsMenuItem_PILT.Size = new System.Drawing.Size(152, 32);
+            this.tsMenuItem_PILT.Text = "PI&&LT";
+            this.tsMenuItem_PILT.Click += new System.EventHandler(this.tsMenuItem_PILT_Click);
+            // 
+            // tsMenuItem_FP
+            // 
+            this.tsMenuItem_FP.Name = "tsMenuItem_FP";
+            this.tsMenuItem_FP.Size = new System.Drawing.Size(152, 32);
+            this.tsMenuItem_FP.Text = "FP";
+            this.tsMenuItem_FP.Click += new System.EventHandler(this.tsMenuItem_FP_Click);
+            // 
+            // tsMenuItem_GI
+            // 
+            this.tsMenuItem_GI.Name = "tsMenuItem_GI";
+            this.tsMenuItem_GI.Size = new System.Drawing.Size(152, 32);
+            this.tsMenuItem_GI.Text = "GI";
+            this.tsMenuItem_GI.Click += new System.EventHandler(this.tsMenuItem_GI_Click);
+            // 
+            // tsMenuItem_Others
+            // 
+            this.tsMenuItem_Others.Name = "tsMenuItem_Others";
+            this.tsMenuItem_Others.Size = new System.Drawing.Size(152, 32);
+            this.tsMenuItem_Others.Text = "Others";
+            this.tsMenuItem_Others.Click += new System.EventHandler(this.tsMenuItem_Others_Click);
+            // 
+            // tsMenuItem_ByStatus
+            // 
+            this.tsMenuItem_ByStatus.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuItem_NotStarted,
+            this.tsMenuItem_InProgress,
+            this.tsMenuItem_Finished,
+            this.tsMenuItem_InEvaluation});
+            this.tsMenuItem_ByStatus.Name = "tsMenuItem_ByStatus";
+            this.tsMenuItem_ByStatus.Size = new System.Drawing.Size(194, 32);
+            this.tsMenuItem_ByStatus.Text = "By Status";
+            this.tsMenuItem_ByStatus.Click += new System.EventHandler(this.tsMenuItem_ByStatus_Click);
+            // 
+            // tsMenuItem_NotStarted
+            // 
+            this.tsMenuItem_NotStarted.Name = "tsMenuItem_NotStarted";
+            this.tsMenuItem_NotStarted.Size = new System.Drawing.Size(210, 32);
+            this.tsMenuItem_NotStarted.Text = "Not started";
+            this.tsMenuItem_NotStarted.Click += new System.EventHandler(this.tsMenuItem_NotStarted_Click);
+            // 
+            // tsMenuItem_InProgress
+            // 
+            this.tsMenuItem_InProgress.Name = "tsMenuItem_InProgress";
+            this.tsMenuItem_InProgress.Size = new System.Drawing.Size(210, 32);
+            this.tsMenuItem_InProgress.Text = "In progress";
+            this.tsMenuItem_InProgress.Click += new System.EventHandler(this.tsMenuItem_InProgress_Click);
+            // 
+            // tsMenuItem_Finished
+            // 
+            this.tsMenuItem_Finished.Name = "tsMenuItem_Finished";
+            this.tsMenuItem_Finished.Size = new System.Drawing.Size(210, 32);
+            this.tsMenuItem_Finished.Text = "Finished";
+            this.tsMenuItem_Finished.Click += new System.EventHandler(this.tsMenuItem_Finished_Click);
+            // 
+            // tsMenuItem_InEvaluation
+            // 
+            this.tsMenuItem_InEvaluation.Name = "tsMenuItem_InEvaluation";
+            this.tsMenuItem_InEvaluation.Size = new System.Drawing.Size(210, 32);
+            this.tsMenuItem_InEvaluation.Text = "In evaluation";
+            this.tsMenuItem_InEvaluation.Click += new System.EventHandler(this.tsMenuItem_InEvaluation_Click);
+            // 
+            // tslbl_CurConditon
+            // 
+            this.tslbl_CurConditon.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.tslbl_CurConditon.Font = new System.Drawing.Font("MetaPlusLF", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tslbl_CurConditon.Name = "tslbl_CurConditon";
+            this.tslbl_CurConditon.Size = new System.Drawing.Size(0, 31);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Column_ProjectName
             // 
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column_ProjectName.DefaultCellStyle = dataGridViewCellStyle17;
+            this.Column_ProjectName.FillWeight = 102.6831F;
             this.Column_ProjectName.HeaderText = "Project Name";
             this.Column_ProjectName.MinimumWidth = 6;
             this.Column_ProjectName.Name = "Column_ProjectName";
-            this.Column_ProjectName.Width = 125;
+            this.Column_ProjectName.Width = 167;
             // 
             // Column_Team
             // 
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column_Team.DefaultCellStyle = dataGridViewCellStyle18;
+            this.Column_Team.FillWeight = 81.21827F;
             this.Column_Team.HeaderText = "Team";
             this.Column_Team.Items.AddRange(new object[] {
             "AMI",
@@ -670,10 +876,11 @@
             this.Column_Team.Name = "Column_Team";
             this.Column_Team.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column_Team.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column_Team.Width = 125;
+            this.Column_Team.Width = 90;
             // 
             // Column_Status
             // 
+            this.Column_Status.FillWeight = 102.6831F;
             this.Column_Status.HeaderText = "Status";
             this.Column_Status.Items.AddRange(new object[] {
             "Not started",
@@ -684,10 +891,11 @@
             this.Column_Status.Name = "Column_Status";
             this.Column_Status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column_Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column_Status.Width = 125;
+            this.Column_Status.Width = 99;
             // 
             // Column_StartFrom
             // 
+            this.Column_StartFrom.FillWeight = 102.6831F;
             this.Column_StartFrom.HeaderText = "Start From";
             this.Column_StartFrom.Items.AddRange(new object[] {
             "CW01",
@@ -747,244 +955,66 @@
             this.Column_StartFrom.Name = "Column_StartFrom";
             this.Column_StartFrom.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column_StartFrom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column_StartFrom.Width = 125;
+            this.Column_StartFrom.Width = 137;
             // 
             // Column_Duration
             // 
+            this.Column_Duration.FillWeight = 102.6831F;
             this.Column_Duration.HeaderText = "Duration";
             this.Column_Duration.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
+            "1 week",
+            "2 weeks",
+            "3 weeks",
+            "4 weeks",
+            "5 weeks",
+            "6 weeks",
+            "7 weeks",
+            "8 weeks",
+            "9 weeks",
+            "10 weeks",
+            "11 weeks",
+            "12 weeks"});
             this.Column_Duration.MinimumWidth = 6;
             this.Column_Duration.Name = "Column_Duration";
             this.Column_Duration.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column_Duration.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column_Duration.Width = 125;
+            this.Column_Duration.Width = 122;
             // 
             // Column_FinishDate
             // 
+            this.Column_FinishDate.FillWeight = 102.6831F;
             this.Column_FinishDate.HeaderText = "Finish Date";
             this.Column_FinishDate.MinimumWidth = 6;
             this.Column_FinishDate.Name = "Column_FinishDate";
-            this.Column_FinishDate.Width = 125;
+            this.Column_FinishDate.Width = 144;
             // 
             // Column_BugetForcast
             // 
+            this.Column_BugetForcast.FillWeight = 102.6831F;
             this.Column_BugetForcast.HeaderText = "Buget Forcast";
             this.Column_BugetForcast.MinimumWidth = 6;
             this.Column_BugetForcast.Name = "Column_BugetForcast";
-            this.Column_BugetForcast.Width = 125;
+            this.Column_BugetForcast.Width = 169;
             // 
             // Column_Remark
             // 
+            this.Column_Remark.FillWeight = 102.6831F;
             this.Column_Remark.HeaderText = "Remark";
             this.Column_Remark.MinimumWidth = 6;
             this.Column_Remark.Name = "Column_Remark";
-            this.Column_Remark.Width = 125;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsdbtn_File,
-            this.tsbtn_AddNew,
-            this.tsbtn_Delete,
-            this.tsbtn_Sort,
-            this.tsdbtn_Filter,
-            this.tslbl_CurConditon});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1394, 32);
-            this.toolStrip1.TabIndex = 7;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tsdbtn_File
-            // 
-            this.tsdbtn_File.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsdbtn_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsMenuItem_Import,
-            this.tsMenuItem_Export});
-            this.tsdbtn_File.Image = ((System.Drawing.Image)(resources.GetObject("tsdbtn_File.Image")));
-            this.tsdbtn_File.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsdbtn_File.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tsdbtn_File.Name = "tsdbtn_File";
-            this.tsdbtn_File.ShowDropDownArrow = false;
-            this.tsdbtn_File.Size = new System.Drawing.Size(73, 29);
-            this.tsdbtn_File.Text = "File(F)";
-            // 
-            // tsMenuItem_Import
-            // 
-            this.tsMenuItem_Import.Name = "tsMenuItem_Import";
-            this.tsMenuItem_Import.Size = new System.Drawing.Size(181, 30);
-            this.tsMenuItem_Import.Text = "Import(I)";
-            this.tsMenuItem_Import.Click += new System.EventHandler(this.tsMenuItem_Import_Click);
-            // 
-            // tsMenuItem_Export
-            // 
-            this.tsMenuItem_Export.Name = "tsMenuItem_Export";
-            this.tsMenuItem_Export.Size = new System.Drawing.Size(181, 30);
-            this.tsMenuItem_Export.Text = "Export(E)";
-            this.tsMenuItem_Export.Click += new System.EventHandler(this.tsMenuItem_Export_Click);
-            // 
-            // tsbtn_AddNew
-            // 
-            this.tsbtn_AddNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbtn_AddNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbtn_AddNew.Image")));
-            this.tsbtn_AddNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtn_AddNew.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tsbtn_AddNew.Name = "tsbtn_AddNew";
-            this.tsbtn_AddNew.Size = new System.Drawing.Size(124, 29);
-            this.tsbtn_AddNew.Text = "Add New(A)";
-            this.tsbtn_AddNew.Click += new System.EventHandler(this.tsbtn_AddNew_Click);
-            // 
-            // tsbtn_Delete
-            // 
-            this.tsbtn_Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbtn_Delete.Image = ((System.Drawing.Image)(resources.GetObject("tsbtn_Delete.Image")));
-            this.tsbtn_Delete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtn_Delete.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tsbtn_Delete.Name = "tsbtn_Delete";
-            this.tsbtn_Delete.Size = new System.Drawing.Size(100, 29);
-            this.tsbtn_Delete.Text = "Delete(D)";
-            // 
-            // tsbtn_Sort
-            // 
-            this.tsbtn_Sort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbtn_Sort.Image = ((System.Drawing.Image)(resources.GetObject("tsbtn_Sort.Image")));
-            this.tsbtn_Sort.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtn_Sort.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tsbtn_Sort.Name = "tsbtn_Sort";
-            this.tsbtn_Sort.Size = new System.Drawing.Size(80, 29);
-            this.tsbtn_Sort.Text = "Sort(S)";
-            // 
-            // tsdbtn_Filter
-            // 
-            this.tsdbtn_Filter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsdbtn_Filter.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsMenuItem_ByIndustry,
-            this.tsMenuItem_ByStatus});
-            this.tsdbtn_Filter.Image = ((System.Drawing.Image)(resources.GetObject("tsdbtn_Filter.Image")));
-            this.tsdbtn_Filter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsdbtn_Filter.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tsdbtn_Filter.Name = "tsdbtn_Filter";
-            this.tsdbtn_Filter.Size = new System.Drawing.Size(68, 29);
-            this.tsdbtn_Filter.Text = "Filter";
-            // 
-            // tsMenuItem_ByIndustry
-            // 
-            this.tsMenuItem_ByIndustry.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsMenuItem_AMI,
-            this.tsMenuItem_ELA,
-            this.tsMenuItem_PILT,
-            this.tsMenuItem_FP,
-            this.tsMenuItem_GI,
-            this.tsMenuItem_Others});
-            this.tsMenuItem_ByIndustry.Name = "tsMenuItem_ByIndustry";
-            this.tsMenuItem_ByIndustry.Size = new System.Drawing.Size(195, 30);
-            this.tsMenuItem_ByIndustry.Text = "By Industry";
-            // 
-            // tsMenuItem_AMI
-            // 
-            this.tsMenuItem_AMI.Name = "tsMenuItem_AMI";
-            this.tsMenuItem_AMI.Size = new System.Drawing.Size(157, 30);
-            this.tsMenuItem_AMI.Text = "AMI";
-            // 
-            // tsMenuItem_ELA
-            // 
-            this.tsMenuItem_ELA.Name = "tsMenuItem_ELA";
-            this.tsMenuItem_ELA.Size = new System.Drawing.Size(157, 30);
-            this.tsMenuItem_ELA.Text = "ELA";
-            // 
-            // tsMenuItem_PILT
-            // 
-            this.tsMenuItem_PILT.Name = "tsMenuItem_PILT";
-            this.tsMenuItem_PILT.Size = new System.Drawing.Size(157, 30);
-            this.tsMenuItem_PILT.Text = "PI&&LT";
-            // 
-            // tsMenuItem_FP
-            // 
-            this.tsMenuItem_FP.Name = "tsMenuItem_FP";
-            this.tsMenuItem_FP.Size = new System.Drawing.Size(157, 30);
-            this.tsMenuItem_FP.Text = "FP";
-            // 
-            // tsMenuItem_GI
-            // 
-            this.tsMenuItem_GI.Name = "tsMenuItem_GI";
-            this.tsMenuItem_GI.Size = new System.Drawing.Size(157, 30);
-            this.tsMenuItem_GI.Text = "GI";
-            // 
-            // tsMenuItem_Others
-            // 
-            this.tsMenuItem_Others.Name = "tsMenuItem_Others";
-            this.tsMenuItem_Others.Size = new System.Drawing.Size(157, 30);
-            this.tsMenuItem_Others.Text = "Others";
-            // 
-            // tsMenuItem_ByStatus
-            // 
-            this.tsMenuItem_ByStatus.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsMenuItem_NotStarted,
-            this.tsMenuItem_InProgress,
-            this.tsMenuItem_Finished,
-            this.tsMenuItem_InEvaluation});
-            this.tsMenuItem_ByStatus.Name = "tsMenuItem_ByStatus";
-            this.tsMenuItem_ByStatus.Size = new System.Drawing.Size(195, 30);
-            this.tsMenuItem_ByStatus.Text = "By Status";
-            // 
-            // tsMenuItem_NotStarted
-            // 
-            this.tsMenuItem_NotStarted.Name = "tsMenuItem_NotStarted";
-            this.tsMenuItem_NotStarted.Size = new System.Drawing.Size(208, 30);
-            this.tsMenuItem_NotStarted.Text = "Not started";
-            // 
-            // tsMenuItem_InProgress
-            // 
-            this.tsMenuItem_InProgress.Name = "tsMenuItem_InProgress";
-            this.tsMenuItem_InProgress.Size = new System.Drawing.Size(208, 30);
-            this.tsMenuItem_InProgress.Text = "In progress";
-            // 
-            // tsMenuItem_Finished
-            // 
-            this.tsMenuItem_Finished.Name = "tsMenuItem_Finished";
-            this.tsMenuItem_Finished.Size = new System.Drawing.Size(208, 30);
-            this.tsMenuItem_Finished.Text = "Finished";
-            // 
-            // tsMenuItem_InEvaluation
-            // 
-            this.tsMenuItem_InEvaluation.Name = "tsMenuItem_InEvaluation";
-            this.tsMenuItem_InEvaluation.Size = new System.Drawing.Size(208, 30);
-            this.tsMenuItem_InEvaluation.Text = "In evaluation";
-            // 
-            // tslbl_CurConditon
-            // 
-            this.tslbl_CurConditon.Name = "tslbl_CurConditon";
-            this.tslbl_CurConditon.Size = new System.Drawing.Size(0, 29);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.Column_Remark.Width = 111;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1422, 763);
+            this.ClientSize = new System.Drawing.Size(1219, 710);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.Name = "Form1";
             this.Text = "FEC Project Management Tool";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
