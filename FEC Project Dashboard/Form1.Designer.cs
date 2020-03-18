@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_Others = new System.Windows.Forms.Panel();
             this.listBox6 = new System.Windows.Forms.ListBox();
@@ -129,15 +130,15 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.Controls.Add(this.panel_Others, 6, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel_GI, 5, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_ELA, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel_FP, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_AMI, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel_PILT, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_Finished, 4, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel_ManualSorting, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel_Main, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel_FP, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel_GI, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel_PILT, 5, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
@@ -193,7 +194,7 @@
             this.panel_GI.Controls.Add(this.listBox3);
             this.panel_GI.Controls.Add(this.label4);
             this.panel_GI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_GI.Location = new System.Drawing.Point(804, 577);
+            this.panel_GI.Location = new System.Drawing.Point(605, 577);
             this.panel_GI.Margin = new System.Windows.Forms.Padding(2);
             this.panel_GI.Name = "panel_GI";
             this.panel_GI.Size = new System.Drawing.Size(195, 120);
@@ -265,7 +266,7 @@
             this.panel_FP.Controls.Add(this.listBox4);
             this.panel_FP.Controls.Add(this.label5);
             this.panel_FP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_FP.Location = new System.Drawing.Point(605, 577);
+            this.panel_FP.Location = new System.Drawing.Point(406, 577);
             this.panel_FP.Margin = new System.Windows.Forms.Padding(2);
             this.panel_FP.Name = "panel_FP";
             this.panel_FP.Size = new System.Drawing.Size(195, 120);
@@ -352,7 +353,7 @@
             this.panel_PILT.Controls.Add(this.listBox5);
             this.panel_PILT.Controls.Add(this.label6);
             this.panel_PILT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_PILT.Location = new System.Drawing.Point(406, 577);
+            this.panel_PILT.Location = new System.Drawing.Point(804, 577);
             this.panel_PILT.Margin = new System.Windows.Forms.Padding(2);
             this.panel_PILT.Name = "panel_PILT";
             this.panel_PILT.Size = new System.Drawing.Size(195, 120);
@@ -623,14 +624,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_ProjectName,
@@ -651,6 +652,7 @@
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView1_CellMouseDown);
             this.dataGridView1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView1_CellMouseMove);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.DataGridView1_DragDrop);
@@ -990,6 +992,9 @@
             // 
             // Column_BugetForcast
             // 
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column_BugetForcast.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column_BugetForcast.FillWeight = 102.6831F;
             this.Column_BugetForcast.HeaderText = "Buget Forcast";
             this.Column_BugetForcast.MinimumWidth = 6;

@@ -1003,5 +1003,44 @@ namespace FEC_Project_Dashboard
             //}
             //SortConditionChanged();
         }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            listBox3.Items.Clear();
+            listBox4.Items.Clear();
+            listBox5.Items.Clear();
+            listBox6.Items.Clear();
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if (dataGridView1.Rows[i].Cells[1].Value != null)
+                {
+                    switch (dataGridView1.Rows[i].Cells[1].Value.ToString())
+                    {
+                        case "AMI":
+                            listBox1.Items.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                            break;
+                        case "ELA":
+                            listBox2.Items.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                            break;
+                        case "GI":
+                            listBox3.Items.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                            break;
+                        case "FP":
+                            listBox4.Items.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                            break;
+                        case "PI&LT":
+                            listBox5.Items.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                            break;
+                        case "Others":
+                            listBox6.Items.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
     }
 }
