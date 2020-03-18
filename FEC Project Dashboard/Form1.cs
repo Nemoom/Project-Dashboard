@@ -1141,5 +1141,13 @@ namespace FEC_Project_Dashboard
                 distributeToTeams();
             }
         }
+
+        private void tsbtn_Delete_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+            {
+                dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[i].Index);
+            }
+        }
     }
 }
