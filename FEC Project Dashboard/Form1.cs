@@ -1124,6 +1124,20 @@ namespace FEC_Project_Dashboard
                         }
                     }
                 }
+                else if (((DataGridView)sender).CurrentCellAddress.X == 6)
+                {
+                    int curX = ((DataGridView)sender).CurrentCellAddress.X;
+                    int curY = ((DataGridView)sender).CurrentCellAddress.Y;
+                    try
+                    {
+                        dataGridView1.Rows[curY].Cells[curX].Value = Convert.ToDouble(dataGridView1.Rows[curY].Cells[curX].Value.ToString()).ToString("C");
+
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
+                }
                 distributeToTeams();
             }
         }
