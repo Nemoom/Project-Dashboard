@@ -26,12 +26,16 @@ namespace FEC_Project_Dashboard
         //List<System.Windows.Forms.ComboBox> List_ComboBox_Teams = new List<System.Windows.Forms.ComboBox>();
         //List<System.Windows.Forms.ComboBox> List_ComboBox_Status = new List<System.Windows.Forms.ComboBox>();
         List<System.Windows.Forms.TextBox> List_txt_ProjectNames = new List<System.Windows.Forms.TextBox>();
+        List<String> List_AllMondays = new List<string>();
+
+        bool b_DataLoaded = false;
         public Form1()
         {
             InitializeComponent();
         }
         
-        public void ExportToCSV()
+        #region Version1
+		public void ExportToCSV()
         {
             string line = string.Empty;
             const string LOG_DIR = "logs";
@@ -509,8 +513,49 @@ namespace FEC_Project_Dashboard
             
         }
 
+
+        #endregion
+        private void GetAllMondays()
+        {
+            List_AllMondays = new List<string>();
+            DateTime t = new DateTime(DateTime.Today.Year, 1, 1);
+            do
+            {
+                if (t.DayOfWeek == DayOfWeek.Monday)
+                {
+                    List_AllMondays.Add(t.ToShortDateString());
+                }
+                t = t.AddDays(1);
+            } while (t.Year == DateTime.Today.Year);
+        }
+
+        private string GetFinishDate(int weekNum)
+        {
+            if (weekNum>0)
+            {
+                if (new DateTime(DateTime.Today.Year, 1, 1).DayOfWeek == DayOfWeek.Monday)
+                {
+                    
+                    return List_AllMondays[weekNum - 1];
+                }
+                else
+                {
+                    if (weekNum == 1)
+                    {
+                        return "";
+                    }
+                    return List_AllMondays[weekNum - 2];
+                }
+            }
+            else
+            {
+                return "";
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            GetAllMondays();
             FileInfo[] ArrayFileInfo;
             //DirectoryInfo pDirectoryInfo = new DirectoryInfo(System.IO.Directory.GetCurrentDirectory()+"\\logs");
             DirectoryInfo pDirectoryInfo = new DirectoryInfo("logs");
@@ -551,7 +596,8 @@ namespace FEC_Project_Dashboard
                     Index_Line++;
                 }
             }
-            
+            b_DataLoaded = true;
+            distributeToTeams();
         }
 
         private void panel_Paint_MouseDown(object sender, MouseEventArgs e)
@@ -571,6 +617,7 @@ namespace FEC_Project_Dashboard
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                b_DataLoaded = false;
                 using (StreamReader read = new StreamReader(openFileDialog1.FileName, true))
                 {
                     string aLine;
@@ -592,6 +639,8 @@ namespace FEC_Project_Dashboard
                         Index_Line++;
                     }
                 }
+                b_DataLoaded = true;
+                distributeToTeams();
             }
         }
 
@@ -634,6 +683,7 @@ namespace FEC_Project_Dashboard
                     csvFile.WriteLine(line);                    
                 }
             }
+            MessageBox.Show("Export to " + csvFilePath);
         }
 
         private void tsbtn_AddNew_Click(object sender, EventArgs e)
@@ -1004,7 +1054,7 @@ namespace FEC_Project_Dashboard
             //SortConditionChanged();
         }
 
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void distributeToTeams()
         {
             listBox1.Items.Clear();
             listBox2.Items.Clear();
@@ -1040,6 +1090,41 @@ namespace FEC_Project_Dashboard
                             break;
                     }
                 }
+            }
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (b_DataLoaded)
+            {
+                if (((DataGridView)sender).CurrentCellAddress.X==4)
+                {
+                    int curX = ((DataGridView)sender).CurrentCellAddress.X;
+                    int curY = ((DataGridView)sender).CurrentCellAddress.Y;
+                    if (dataGridView1.Rows[curY].Cells[curX - 1].Value != null)
+                    {
+                        if (dataGridView1.Rows[curY].Cells[curX - 1].Value.ToString() !="")
+                        {
+                            dataGridView1.Rows[curY].Cells[curX + 1].Value = GetFinishDate(Convert.ToInt16(dataGridView1.Rows[curY].Cells[curX - 1].Value.ToString().Substring(2, 2))
+                                                                            + Convert.ToInt16(dataGridView1.Rows[curY].Cells[curX].Value.ToString().Split(' ')[0]));
+                        }
+                    }
+                    //((DataGridView)sender).CurrentCell.Value 
+                }
+                else if (((DataGridView)sender).CurrentCellAddress.X == 3)
+                {
+                    int curX = ((DataGridView)sender).CurrentCellAddress.X;
+                    int curY = ((DataGridView)sender).CurrentCellAddress.Y;
+                    if (dataGridView1.Rows[curY].Cells[curX + 1].Value != null)
+                    {
+                        if (dataGridView1.Rows[curY].Cells[curX + 1].Value.ToString() != "")
+                        {
+                            dataGridView1.Rows[curY].Cells[curX + 2].Value = GetFinishDate(Convert.ToInt16(dataGridView1.Rows[curY].Cells[curX].Value.ToString().Substring(2, 2))
+                                                                           + Convert.ToInt16(dataGridView1.Rows[curY].Cells[curX + 1].Value.ToString().Split(' ')[0]));
+                        }
+                    }
+                }
+                distributeToTeams();
             }
         }
     }
