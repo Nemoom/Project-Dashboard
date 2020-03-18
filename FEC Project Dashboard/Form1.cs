@@ -28,6 +28,7 @@ namespace FEC_Project_Dashboard
         //List<System.Windows.Forms.ComboBox> List_ComboBox_Status = new List<System.Windows.Forms.ComboBox>();
         List<System.Windows.Forms.TextBox> List_txt_ProjectNames = new List<System.Windows.Forms.TextBox>();
         List<String> List_AllMondays = new List<string>();
+        DataTable DGV_RecordTable;
 
         bool b_DataLoaded = false;
         public Form1()
@@ -554,6 +555,28 @@ namespace FEC_Project_Dashboard
             }
         }
 
+        public DataTable GetDgvToTable(DataGridView dgv)
+        {
+            DataTable dt = new DataTable();
+            // 列强制转换
+            for (int count = 0; count < dgv.Columns.Count; count++)
+            {
+                DataColumn dc = new DataColumn(dgv.Columns[count].Name.ToString());
+                dt.Columns.Add(dc);
+            }
+            // 循环行
+            for (int count = 0; count < dgv.Rows.Count; count++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int countsub = 0; countsub < dgv.Columns.Count; countsub++)
+                {
+                    dr[countsub] = Convert.ToString(dgv.Rows[count].Cells[countsub].Value);
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Text = this.Text + "   V" + Assembly.GetExecutingAssembly().GetName().Version + "";
@@ -576,28 +599,36 @@ namespace FEC_Project_Dashboard
                         LastIndex = i;
                     }
                 }
-            }            
-            using (StreamReader read = new StreamReader(pDirectoryInfo.GetFiles()[LastIndex].FullName, true))
+            }
+            try
             {
-                string aLine;
-                int Index_Line = 0;
-                while ((aLine = read.ReadLine()) != null)
+                using (StreamReader read = new StreamReader(pDirectoryInfo.GetFiles()[LastIndex].FullName, true))
                 {
-                    if (Index_Line != 0)
+                    string aLine;
+                    int Index_Line = 0;
+                    while ((aLine = read.ReadLine()) != null)
                     {
-                        tsbtn_AddNew_Click(sender, e);
-                        for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                        if (Index_Line != 0)
                         {
-                            dataGridView1.Rows[Index_Line - 1].Cells[i].Value = aLine.Split(',')[i + 1];
+                            tsbtn_AddNew_Click(sender, e);
+                            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                            {
+                                dataGridView1.Rows[Index_Line - 1].Cells[i].Value = aLine.Split(',')[i + 1];
+                            }
                         }
+                        else
+                        {
+                            dataGridView1.Rows.Clear();
+                        }
+                        Index_Line++;
                     }
-                    else
-                    {
-                        dataGridView1.Rows.Clear();
-                    }
-                    Index_Line++;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            DGV_RecordTable = GetDgvToTable(dataGridView1);
             b_DataLoaded = true;
             distributeToTeams();
         }
@@ -620,26 +651,34 @@ namespace FEC_Project_Dashboard
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 b_DataLoaded = false;
-                using (StreamReader read = new StreamReader(openFileDialog1.FileName, true))
+                try
                 {
-                    string aLine;
-                    int Index_Line = 0;
-                    while ((aLine = read.ReadLine()) != null)
+                    using (StreamReader read = new StreamReader(openFileDialog1.FileName, true))
                     {
-                        if (Index_Line != 0)
+                        string aLine;
+                        int Index_Line = 0;
+                        while ((aLine = read.ReadLine()) != null)
                         {
-                            tsbtn_AddNew_Click(sender, e);
-                            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                            if (Index_Line != 0)
                             {
-                                dataGridView1.Rows[Index_Line - 1].Cells[i].Value = aLine.Split(',')[i + 1];                                 
+                                tsbtn_AddNew_Click(sender, e);
+                                for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                                {
+                                    dataGridView1.Rows[Index_Line - 1].Cells[i].Value = aLine.Split(',')[i + 1];
+                                }
                             }
+                            else
+                            {
+                                dataGridView1.Rows.Clear();
+                            }
+                            Index_Line++;
                         }
-                        else
-                        {
-                            dataGridView1.Rows.Clear();
-                        }
-                        Index_Line++;
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 b_DataLoaded = true;
                 distributeToTeams();
@@ -657,33 +696,40 @@ namespace FEC_Project_Dashboard
             {
                 File.Delete(csvFilePath);
             }
-            //写入表头
-            using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
+            try
             {
-                line = "No.,Project Name,Team,Status,Start From,Duration,Finish Date,Buget Forcast,Remark";
-                csvFile.WriteLine(line);
-            }
-            
-            using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
-            {
-                for (int i = 0; i < dataGridView1.RowCount; i++)
+                //写入表头
+                using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
                 {
-                    line = (i + 1).ToString();
-                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
-                    {
-                        if (dataGridView1.Rows[i].Cells[j].Value==null)
-                        {
-                            line = line + ",";
-
-                        }
-                        else
-                        {
-                            line = line + "," + dataGridView1.Rows[i].Cells[j].Value.ToString();
-
-                        }
-                    }
-                    csvFile.WriteLine(line);                    
+                    line = "No.,Project Name,Team,Status,Start From,Duration,Finish Date,Buget Forcast,Remark";
+                    csvFile.WriteLine(line);
                 }
+
+                using (StreamWriter csvFile = new StreamWriter(csvFilePath, true, Encoding.UTF8))
+                {
+                    for (int i = 0; i < dataGridView1.RowCount; i++)
+                    {
+                        line = (i + 1).ToString();
+                        for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                        {
+                            if (dataGridView1.Rows[i].Cells[j].Value == null)
+                            {
+                                line = line + ",";
+
+                            }
+                            else
+                            {
+                                line = line + "," + dataGridView1.Rows[i].Cells[j].Value.ToString();
+
+                            }
+                        }
+                        csvFile.WriteLine(line);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             MessageBox.Show("Export to " + csvFilePath);
         }
@@ -775,6 +821,8 @@ namespace FEC_Project_Dashboard
         private void SortConditionChanged()
         {
             tslbl_CurConditon.Text = "";
+            string str_SelectStatus = "";
+            string str_SelectIndustry = "";
             if (tsMenuItem_ByIndustry.Checked)
             {
                 tslbl_CurConditon.Text = tslbl_CurConditon.Text + "Team=";
@@ -785,6 +833,11 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "AMI";
+                    if (str_SelectIndustry!="")
+                    {
+                        str_SelectIndustry = str_SelectIndustry + " or ";
+                    }
+                    str_SelectIndustry = str_SelectIndustry + "Column_Team='AMI'";
                 }
                 if (tsMenuItem_ELA.Checked)
                 {
@@ -793,6 +846,11 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "ELA";
+                    if (str_SelectIndustry != "")
+                    {
+                        str_SelectIndustry = str_SelectIndustry + " or ";
+                    }
+                    str_SelectIndustry = str_SelectIndustry + "Column_Team='ELA'";
                 }
                 if ( tsMenuItem_PILT.Checked )
                 {
@@ -801,6 +859,11 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "PI&&LT";
+                    if (str_SelectIndustry != "")
+                    {
+                        str_SelectIndustry = str_SelectIndustry + " or ";
+                    }
+                    str_SelectIndustry = str_SelectIndustry + "Column_Team='PI&LT'";
                 }
                 if (tsMenuItem_FP.Checked )
                 {
@@ -809,6 +872,11 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "FP";
+                    if (str_SelectIndustry != "")
+                    {
+                        str_SelectIndustry = str_SelectIndustry + " or ";
+                    }
+                    str_SelectIndustry = str_SelectIndustry + "Column_Team='FP'";
                 }
                 if ( tsMenuItem_GI.Checked )
                 {
@@ -817,6 +885,11 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "GI";
+                    if (str_SelectIndustry != "")
+                    {
+                        str_SelectIndustry = str_SelectIndustry + " or ";
+                    }
+                    str_SelectIndustry = str_SelectIndustry + "Column_Team='GI'";
                 }
                 if (tsMenuItem_Others.Checked)
                 {
@@ -825,6 +898,11 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "Others";
+                    if (str_SelectIndustry != "")
+                    {
+                        str_SelectIndustry = str_SelectIndustry + " or ";
+                    }
+                    str_SelectIndustry = str_SelectIndustry + "Column_Team='Others'";
                 }
             }
             
@@ -842,6 +920,11 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "Not Started";
+                    if (str_SelectStatus != "")
+                    {
+                        str_SelectStatus = str_SelectStatus + " or ";
+                    }
+                    str_SelectStatus = str_SelectStatus + "Column_Status='Not Started'";
                 }
                 if (tsMenuItem_InProgress.Checked )
                 {
@@ -850,6 +933,11 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "In Progress";
+                    if (str_SelectStatus != "")
+                    {
+                        str_SelectStatus = str_SelectStatus + " or ";
+                    }
+                    str_SelectStatus = str_SelectStatus + "Column_Status='In Progress'";
                 }
                 if ( tsMenuItem_Finished.Checked )
                 {
@@ -858,6 +946,11 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "Finished";
+                    if (str_SelectStatus != "")
+                    {
+                        str_SelectStatus = str_SelectStatus + " or ";
+                    }
+                    str_SelectStatus = str_SelectStatus + "Column_Status='Finished'";
                 }
                 if (tsMenuItem_InEvaluation.Checked)
                 {
@@ -866,7 +959,38 @@ namespace FEC_Project_Dashboard
                         tslbl_CurConditon.Text = tslbl_CurConditon.Text + ",";
                     }
                     tslbl_CurConditon.Text = tslbl_CurConditon.Text + "In Evaluation";
+                    if (str_SelectStatus != "")
+                    {
+                        str_SelectStatus = str_SelectStatus + " or ";
+                    }
+                    str_SelectStatus = str_SelectStatus + "Column_Status='In Evaluation'";
                 }
+            }
+            DataView dv = DGV_RecordTable.DefaultView;
+            if (str_SelectStatus!="")
+            {
+                if (str_SelectIndustry!="")
+                {
+                    dv.RowFilter = str_SelectStatus + " and " + str_SelectIndustry;
+                }
+                else
+                {
+                    dv.RowFilter = str_SelectStatus;
+                }
+            }
+            else
+            {
+                if (str_SelectIndustry != "")
+                {
+                    dv.RowFilter = str_SelectIndustry;
+                }
+            }
+            
+
+            dataGridView1.Rows.Clear();
+            for (int i = 0; i < dv.Count; i++)
+            {
+                dataGridView1.Rows.Add(dv[i].Row.ItemArray);
             }
         }
 
