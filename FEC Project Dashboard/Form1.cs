@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Reflection;
 
 namespace FEC_Project_Dashboard
 {
@@ -555,6 +556,7 @@ namespace FEC_Project_Dashboard
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Text = this.Text + "   V" + Assembly.GetExecutingAssembly().GetName().Version + "";
             GetAllMondays();
             FileInfo[] ArrayFileInfo;
             //DirectoryInfo pDirectoryInfo = new DirectoryInfo(System.IO.Directory.GetCurrentDirectory()+"\\logs");
