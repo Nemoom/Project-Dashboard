@@ -975,11 +975,11 @@ namespace FEC_Project_Dashboard
                 }
             }
             DataView dv = DGV_RecordTable.DefaultView;
-            if (str_SelectStatus!="")
+            if (str_SelectStatus != "")
             {
-                if (str_SelectIndustry!="")
+                if (str_SelectIndustry != "")
                 {
-                    dv.RowFilter = str_SelectStatus + " and " + str_SelectIndustry;
+                    dv.RowFilter = "(" + str_SelectStatus + ") and (" + str_SelectIndustry + ")";                     
                 }
                 else
                 {
