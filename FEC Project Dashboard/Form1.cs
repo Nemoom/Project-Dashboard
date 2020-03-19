@@ -599,36 +599,37 @@ namespace FEC_Project_Dashboard
                         LastIndex = i;
                     }
                 }
-            }
-            try
-            {
-                using (StreamReader read = new StreamReader(pDirectoryInfo.GetFiles()[LastIndex].FullName, true))
+                try
                 {
-                    string aLine;
-                    int Index_Line = 0;
-                    while ((aLine = read.ReadLine()) != null)
+                    using (StreamReader read = new StreamReader(pDirectoryInfo.GetFiles()[LastIndex].FullName, true))
                     {
-                        if (Index_Line != 0)
+                        string aLine;
+                        int Index_Line = 0;
+                        while ((aLine = read.ReadLine()) != null)
                         {
-                            tsbtn_AddNew_Click(sender, e);
-                            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                            if (Index_Line != 0)
                             {
-                                dataGridView1.Rows[Index_Line - 1].Cells[i].Value = aLine.Split(',')[i + 1];
+                                tsbtn_AddNew_Click(sender, e);
+                                for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                                {
+                                    dataGridView1.Rows[Index_Line - 1].Cells[i].Value = aLine.Split(',')[i + 1];
+                                }
                             }
+                            else
+                            {
+                                dataGridView1.Rows.Clear();
+                            }
+                            Index_Line++;
                         }
-                        else
-                        {
-                            dataGridView1.Rows.Clear();
-                        }
-                        Index_Line++;
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                DGV_RecordTable = GetDgvToTable(dataGridView1);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            DGV_RecordTable = GetDgvToTable(dataGridView1);
+            
             b_DataLoaded = true;
             distributeToTeams();
         }
@@ -680,6 +681,7 @@ namespace FEC_Project_Dashboard
                     MessageBox.Show(ex.Message);
                     throw;
                 }
+                DGV_RecordTable = GetDgvToTable(dataGridView1);
                 b_DataLoaded = true;
                 distributeToTeams();
             }
@@ -731,6 +733,7 @@ namespace FEC_Project_Dashboard
             {
                 MessageBox.Show(ex.Message);
             }
+            DGV_RecordTable = GetDgvToTable(dataGridView1);
             MessageBox.Show("Export to " + csvFilePath);
         }
 
@@ -1252,17 +1255,18 @@ namespace FEC_Project_Dashboard
                 }
                 else if (((DataGridView)sender).CurrentCellAddress.X == 6)
                 {
-                    int curX = ((DataGridView)sender).CurrentCellAddress.X;
-                    int curY = ((DataGridView)sender).CurrentCellAddress.Y;
-                    try
-                    {
-                        dataGridView1.Rows[curY].Cells[curX].Value = Convert.ToDouble(dataGridView1.Rows[curY].Cells[curX].Value.ToString()).ToString("C");
+                    //
+                    //int curX = ((DataGridView)sender).CurrentCellAddress.X;
+                    //int curY = ((DataGridView)sender).CurrentCellAddress.Y;
+                    //try
+                    //{
+                    //    dataGridView1.Rows[curY].Cells[curX].Value = Convert.ToDouble(dataGridView1.Rows[curY].Cells[curX].Value.ToString()).ToString("C");
 
-                    }
-                    catch (Exception)
-                    {
+                    //}
+                    //catch (Exception)
+                    //{
                         
-                    }
+                    //}
                 }
                 distributeToTeams();
             }
