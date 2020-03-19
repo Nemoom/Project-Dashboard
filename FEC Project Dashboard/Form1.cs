@@ -979,11 +979,13 @@ namespace FEC_Project_Dashboard
             {
                 if (str_SelectIndustry != "")
                 {
-                    dv.RowFilter = "(" + str_SelectStatus + ") and (" + str_SelectIndustry + ")";                     
+                    dv.RowFilter = "(" + str_SelectStatus + ") and (" + str_SelectIndustry + ")";
+                    tsbtn_Clear.Visible = true;
                 }
                 else
                 {
                     dv.RowFilter = str_SelectStatus;
+                    tsbtn_Clear.Visible = true;
                 }
             }
             else
@@ -991,6 +993,11 @@ namespace FEC_Project_Dashboard
                 if (str_SelectIndustry != "")
                 {
                     dv.RowFilter = str_SelectIndustry;
+                    tsbtn_Clear.Visible = true;
+                }
+                else
+                {
+                    tsbtn_Clear.Visible = false;
                 }
             }
             
@@ -1283,6 +1290,61 @@ namespace FEC_Project_Dashboard
             {
                 dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[i].Index);
             }
+        }
+
+        private void tslbl_CurConditon_DoubleClick(object sender, EventArgs e)
+        {
+            //撤销所有Filter条件
+            tslbl_CurConditon.Text = "";
+            tsMenuItem_ByIndustry.Checked = false;
+            tsMenuItem_AMI.Checked = false;
+            tsMenuItem_ELA.Checked = false;
+            tsMenuItem_PILT.Checked = false;
+            tsMenuItem_FP.Checked = false;
+            tsMenuItem_GI.Checked = false;
+            tsMenuItem_Others.Checked = false;
+            tsMenuItem_ByStatus.Checked = false;
+            tsMenuItem_NotStarted.Checked = false;
+            tsMenuItem_InProgress.Checked = false;
+            tsMenuItem_Finished.Checked = false;
+            tsMenuItem_InEvaluation.Checked = false;
+        }
+
+        private void tsdbtn_Filter_DoubleClick(object sender, EventArgs e)
+        {
+            //撤销所有Filter条件
+            tslbl_CurConditon.Text = "";
+            tsMenuItem_ByIndustry.Checked = false;
+            tsMenuItem_AMI.Checked = false;
+            tsMenuItem_ELA.Checked = false;
+            tsMenuItem_PILT.Checked = false;
+            tsMenuItem_FP.Checked = false;
+            tsMenuItem_GI.Checked = false;
+            tsMenuItem_Others.Checked = false;
+            tsMenuItem_ByStatus.Checked = false;
+            tsMenuItem_NotStarted.Checked = false;
+            tsMenuItem_InProgress.Checked = false;
+            tsMenuItem_Finished.Checked = false;
+            tsMenuItem_InEvaluation.Checked = false;
+        }
+
+        private void tsbtn_Clear_Click(object sender, EventArgs e)
+        {
+            //撤销所有Filter条件
+            tslbl_CurConditon.Text = "";
+            tsMenuItem_ByIndustry.Checked = false;
+            tsMenuItem_AMI.Checked = false;
+            tsMenuItem_ELA.Checked = false;
+            tsMenuItem_PILT.Checked = false;
+            tsMenuItem_FP.Checked = false;
+            tsMenuItem_GI.Checked = false;
+            tsMenuItem_Others.Checked = false;
+            tsMenuItem_ByStatus.Checked = false;
+            tsMenuItem_NotStarted.Checked = false;
+            tsMenuItem_InProgress.Checked = false;
+            tsMenuItem_Finished.Checked = false;
+            tsMenuItem_InEvaluation.Checked = false;
+            tsbtn_Clear.Visible = false;
         }
     }
 }

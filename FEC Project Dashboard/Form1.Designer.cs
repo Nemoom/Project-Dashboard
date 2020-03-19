@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_Others = new System.Windows.Forms.Panel();
             this.listBox6 = new System.Windows.Forms.ListBox();
@@ -100,6 +100,7 @@
             this.Column_FinishDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_BugetForcast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsbtn_Clear = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel_Others.SuspendLayout();
             this.panel_GI.SuspendLayout();
@@ -624,14 +625,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_ProjectName,
@@ -668,7 +669,8 @@
             this.tsbtn_Delete,
             this.tsbtn_Sort,
             this.tsdbtn_Filter,
-            this.tslbl_CurConditon});
+            this.tslbl_CurConditon,
+            this.tsbtn_Clear});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1190, 34);
@@ -849,8 +851,10 @@
             // 
             this.tslbl_CurConditon.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tslbl_CurConditon.Font = new System.Drawing.Font("MetaPlusLF", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tslbl_CurConditon.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
             this.tslbl_CurConditon.Name = "tslbl_CurConditon";
             this.tslbl_CurConditon.Size = new System.Drawing.Size(0, 31);
+            this.tslbl_CurConditon.DoubleClick += new System.EventHandler(this.tslbl_CurConditon_DoubleClick);
             // 
             // openFileDialog1
             // 
@@ -993,9 +997,9 @@
             // 
             // Column_BugetForcast
             // 
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column_BugetForcast.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column_BugetForcast.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column_BugetForcast.FillWeight = 102.6831F;
             this.Column_BugetForcast.HeaderText = "Buget Forcast";
             this.Column_BugetForcast.MinimumWidth = 6;
@@ -1009,6 +1013,18 @@
             this.Column_Remark.MinimumWidth = 6;
             this.Column_Remark.Name = "Column_Remark";
             this.Column_Remark.Width = 111;
+            // 
+            // tsbtn_Clear
+            // 
+            this.tsbtn_Clear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtn_Clear.Image = ((System.Drawing.Image)(resources.GetObject("tsbtn_Clear.Image")));
+            this.tsbtn_Clear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtn_Clear.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tsbtn_Clear.Name = "tsbtn_Clear";
+            this.tsbtn_Clear.Size = new System.Drawing.Size(67, 31);
+            this.tsbtn_Clear.Text = "Clear";
+            this.tsbtn_Clear.Visible = false;
+            this.tsbtn_Clear.Click += new System.EventHandler(this.tsbtn_Clear_Click);
             // 
             // Form1
             // 
@@ -1128,6 +1144,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_FinishDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_BugetForcast;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Remark;
+        private System.Windows.Forms.ToolStripButton tsbtn_Clear;
     }
 }
 
