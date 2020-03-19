@@ -739,9 +739,14 @@ namespace FEC_Project_Dashboard
 
         private void tsbtn_AddNew_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add();
-           
-            
+            if (dataGridView1.SelectedRows.Count>0)
+            {
+                dataGridView1.Rows.Insert(dataGridView1.SelectedRows[0].Index,1);
+            }
+            else
+            {
+                dataGridView1.Rows.Add();
+            }
         }
 
         private int GetRowFromPoint(int x, int y)
