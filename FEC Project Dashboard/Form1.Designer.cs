@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_Others = new System.Windows.Forms.Panel();
             this.listBox6 = new System.Windows.Forms.ListBox();
@@ -625,14 +625,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("MetaPlusLF", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_ProjectName,
@@ -854,7 +854,6 @@
             this.tslbl_CurConditon.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
             this.tslbl_CurConditon.Name = "tslbl_CurConditon";
             this.tslbl_CurConditon.Size = new System.Drawing.Size(0, 31);
-            this.tslbl_CurConditon.DoubleClick += new System.EventHandler(this.tslbl_CurConditon_DoubleClick);
             // 
             // openFileDialog1
             // 
@@ -997,9 +996,9 @@
             // 
             // Column_BugetForcast
             // 
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column_BugetForcast.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "C2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column_BugetForcast.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column_BugetForcast.FillWeight = 102.6831F;
             this.Column_BugetForcast.HeaderText = "Buget Forcast";
             this.Column_BugetForcast.MinimumWidth = 6;
@@ -1021,8 +1020,8 @@
             this.tsbtn_Clear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtn_Clear.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
             this.tsbtn_Clear.Name = "tsbtn_Clear";
-            this.tsbtn_Clear.Size = new System.Drawing.Size(67, 31);
-            this.tsbtn_Clear.Text = "Clear";
+            this.tsbtn_Clear.Size = new System.Drawing.Size(94, 31);
+            this.tsbtn_Clear.Text = "Clear(C)";
             this.tsbtn_Clear.Visible = false;
             this.tsbtn_Clear.Click += new System.EventHandler(this.tsbtn_Clear_Click);
             // 
